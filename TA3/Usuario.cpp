@@ -7,10 +7,35 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
-TForm1 *Form1;
+TVPrincipal *VPrincipal;
 //---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner)
+__fastcall TVPrincipal::TVPrincipal(TComponent* Owner)
     : TForm(Owner)
 {
+}
+//---------------------------------------------------------------------------
+void __fastcall TVPrincipal::BotonIniciarTarjeta(TObject *Sender)
+{
+    //process_init(NULL);
+    Label1->Enabled=true;
+    Label2->Enabled=true;
+    BLed1->Enabled=true;
+    BLed2->Enabled=true;
+    BAlternar->Enabled=true;
+    PTimer->Enabled=true;
+
+}
+//---------------------------------------------------------------------------
+void __fastcall TVPrincipal::IniciarTimer(TObject *Sender)
+{
+    if(VPrincipal->Tempo1->Enabled == false){
+        VPrincipal->Tempo1->Enabled = true;
+        VPrincipal->PTimer->Color = clYellow;
+        VPrincipal->PTimer->Caption = "Timer OFF";
+    }else{
+        VPrincipal->Tempo1->Enabled = false;
+        VPrincipal->PTimer->Color = clLime;
+        VPrincipal->PTimer->Caption = "Timer ON";
+    }
 }
 //---------------------------------------------------------------------------

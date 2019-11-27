@@ -4,7 +4,7 @@
   <MACROS>
     <VERSION value="BCB.06.00"/>
     <PROJECT value="ProjectTA3.exe"/>
-    <OBJFILES value="ProjectTA3.obj Usuario.obj Proceso.obj DatosComunes.obj"/>
+    <OBJFILES value="ProjectTA3.obj Usuario.obj"/>
     <RESFILES value="ProjectTA3.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
@@ -55,9 +55,7 @@
   <FILELIST>
       <FILE FILENAME="ProjectTA3.res" FORMNAME="" UNITNAME="ProjectTA3.res" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="ProjectTA3.cpp" FORMNAME="" UNITNAME="ProjectTA3" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="Usuario.cpp" FORMNAME="VPrincipal" UNITNAME="Usuario" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="Proceso.cpp" FORMNAME="" UNITNAME="Proceso" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="DatosComunes.cpp" FORMNAME="" UNITNAME="DatosComunes" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Usuario.cpp" FORMNAME="Form1" UNITNAME="Usuario" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>
