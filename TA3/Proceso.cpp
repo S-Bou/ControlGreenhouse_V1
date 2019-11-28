@@ -43,7 +43,7 @@ int process_read_port1(void) {
     int32 daq_error;
     uInt32 data;
 
-daq_error = DAQmxReadDigitalScalarU32 (read_port1_task, 0.0, &data,NULL);
+daq_error = DAQmxReadDigitalScalarU32 (Read_Port_x, 0.0, &data,NULL);
 
     if (daq_error != 0) process_error(daq_error,"process_read_port1()");
 

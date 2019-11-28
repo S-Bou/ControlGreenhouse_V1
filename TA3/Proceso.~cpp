@@ -38,3 +38,14 @@ daq_error = DAQmxCreateDIChan(Read_Port_x, "Dev3/port1",
             "",DAQmx_Val_ChanForAllLines);
     if(daq_error != 0)process_error(daq_error, "process_init()->2.0");
 }
+// read port 1 pins and return state -------------------------------------------
+int process_read_port1(void) {
+    int32 daq_error;
+    uInt32 data;
+
+daq_error = DAQmxReadDigitalScalarU32 (Read_Port_x, 0.0, &data,NULL);
+
+    if (daq_error != 0) process_error(daq_error,"process_read_port1()");
+
+    return(data);
+}

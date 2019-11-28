@@ -1,8 +1,8 @@
 //---------------------------------------------------------------------------
-
 #include <vcl.h>
 #pragma hdrstop
-
+#include "Proceso.h"
+#include "DatosComunes.h"
 #include "Usuario.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
