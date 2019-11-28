@@ -41,21 +41,25 @@ void __fastcall TVPrincipal::Tempo1Timer(TObject *Sender)
     int port1;
     port1 = estado_Port1();
 
-    double humedad;
-    //level = process_read_ai0();
+    process_read_ai0();
+    int humedad;
+    humedad = estado_AI0();
+    VPrincipal->ScrollBar1->Position=humedad;
     VPrincipal->Edit2->Text=humedad;
     VPrincipal->Edit2->Text=Edit2->Text+"%";
 
+    if (humedad<20){                                //State of humity
+        VPrincipal->Shape3->Brush->Color=clRed;
+    }else{
+        VPrincipal->Shape3->Brush->Color=clWhite;
+    }
 
-
-
-    VPrincipal->Edit1->Text=humedad;
-    if ((port1 & 0x01) == 0){                       //State of lamp
+    if ((port1 & 0x01) == 0){                        //State of lamp
         VPrincipal->Shape1->Brush->Color=clRed;
     }else{
         VPrincipal->Shape1->Brush->Color=clWhite;
     }
-    if ((port1 & 0x02) == 0){                       //State of ventilation
+    if ((port1 & 0x02) == 0){                        //State of ventilation
         VPrincipal->Shape2->Brush->Color=clRed;
     }else{
         VPrincipal->Shape2->Brush->Color=clWhite;
@@ -69,5 +73,6 @@ void __fastcall TVPrincipal::Tempo1Timer(TObject *Sender)
     }
 }
 //---------------------------------------------------------------------------
+
 
 

@@ -24,9 +24,11 @@ void process_error(int32 code, char *suffix) {
 // process initialization ---------------------------------------------------
 void process_init(char *deviceName) {
 
-    char nameP1[20];
+    char nameP1[20], nameAI0[20];
     strcpy(nameP1, deviceName);
     strcat(nameP1, "/port1");
+    strcpy(nameAI0, deviceName);
+    strcat(nameAI0, "/ai0");
 
     int32 daq_error;
     portstate = 0x00;
@@ -35,10 +37,17 @@ void process_init(char *deviceName) {
 daq_error = DAQmxCreateTask("Read task",&Read_Port1);
     if(daq_error != 0)process_error(daq_error,"process_init()->1.0");
 
+daq_error = DAQmxCreateTask("Analog read task", &Read_AI0);
+    if(daq_error != 0)process_error(daq_error,"process_init()->1.2");
+
 // Now, add channels to the task
-daq_error = DAQmxCreateDIChan(Read_Port1, "nameP1",
+daq_error = DAQmxCreateDIChan(Read_Port1, nameP1,
             "",DAQmx_Val_ChanForAllLines);
     if(daq_error != 0)process_error(daq_error, "process_init()->2.0");
+
+daq_error = DAQmxCreateAIVoltageChan(Read_AI0, nameAI0,
+            "", DAQmx_Val_RSE, 0.0, 10.0, DAQmx_Val_Volts, NULL);
+    if(daq_error != 0)process_error(daq_error, "process_init()->2.2");
 }
 // read port 1 pins and return state -------------------------------------------
 void process_read_port1(void) {
@@ -50,4 +59,14 @@ daq_error = DAQmxReadDigitalScalarU32 (Read_Port1, 0.0, &data, NULL);
     if (daq_error != 0) process_error(daq_error,"process_read_port1()");
 
     Store_Port1(data);
+}
+// read ai0 --------------------------------------------------------------------
+void process_read_ai0(void) {
+    int32 daq_error;
+    float64 Humity;
+
+daq_error = DAQmxReadAnalogScalarF64 (Read_AI0, 1.0,&Humity, NULL);
+    if (daq_error != 0)process_error(daq_error,"process_read_ai0()");
+
+    Store_AI0(Humity);
 }

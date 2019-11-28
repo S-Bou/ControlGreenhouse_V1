@@ -125,7 +125,7 @@ object VPrincipal: TVPrincipal
     Top = 232
     Width = 300
     Height = 13
-    Caption = 'Se activa cuando humedad est'#225' por debajo del 80%.'
+    Caption = 'Se activa cuando humedad est'#225' por debajo del 20%.'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -282,7 +282,7 @@ object VPrincipal: TVPrincipal
   end
   object Tempo1: TTimer
     Enabled = False
-    Interval = 200
+    Interval = 400
     OnTimer = Tempo1Timer
   end
 end

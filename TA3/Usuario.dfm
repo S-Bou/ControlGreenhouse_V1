@@ -267,9 +267,9 @@ object VPrincipal: TVPrincipal
     TabOrder = 5
   end
   object Edit2: TEdit
-    Left = 264
+    Left = 256
     Top = 392
-    Width = 49
+    Width = 57
     Height = 32
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -278,7 +278,6 @@ object VPrincipal: TVPrincipal
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 6
-    Text = '80%'
   end
   object Tempo1: TTimer
     Enabled = False
