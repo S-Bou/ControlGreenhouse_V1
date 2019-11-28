@@ -5,11 +5,11 @@
 
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-static int led;
+static int port1;
 
-void Store_Led(int data){
-    led = data;
+void Store_Port1(int data){
+    port1 = data;
 }
-int estado_Led(){
-    return (led);
+int estado_Port1(){
+    return (port1);
 }

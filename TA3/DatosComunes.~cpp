@@ -5,15 +5,11 @@
 
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-static uInt32 led1, led2;
+static int led;
 
-void StoreLeds(int data){
-    led1 = process_read_port1();
-    led2 = process_read_port1();
+void Store_Led(int data){
+    led = data;
 }
-int estado_Led1(){
-    return (led1);
-}
-int estado_Led2(){
-    return (led2);
+int estado_Led(){
+    return (led);
 }

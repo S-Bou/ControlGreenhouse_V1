@@ -1,8 +1,7 @@
 //---------------------------------------------------------------------------
 #ifndef DatosComunesH
-enum {LED_OFF, LED_ON};
-void Store_Led(int);
-int estado_Led();
+void Store_Port1(int);
+int estado_Port1();
 
 #define DatosComunesH
 //---------------------------------------------------------------------------
