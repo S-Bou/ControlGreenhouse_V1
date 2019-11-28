@@ -18,13 +18,7 @@ __fastcall TVPrincipal::TVPrincipal(TComponent* Owner)
 void __fastcall TVPrincipal::BotonIniciarTarjeta(TObject *Sender)
 {
     process_init();
-    Label1->Enabled=true;
-    Label2->Enabled=true;
-    BLed1->Enabled=true;
-    BLed2->Enabled=true;
-    BAlternar->Enabled=true;
     PTimer->Enabled=true;
-
 }
 //---------------------------------------------------------------------------
 void __fastcall TVPrincipal::IniciarTimer(TObject *Sender)

@@ -15,11 +15,11 @@ object VPrincipal: TVPrincipal
   TextHeight = 13
   object Label1: TLabel
     Left = 16
-    Top = 72
+    Top = 64
     Width = 146
     Height = 37
     Caption = 'L'#225'mpara:'
-    Color = clMenuHighlight
+    Color = cl3DLight
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -32
@@ -30,7 +30,7 @@ object VPrincipal: TVPrincipal
   end
   object Shape1: TShape
     Left = 272
-    Top = 80
+    Top = 72
     Width = 33
     Height = 33
     Shape = stCircle
@@ -41,7 +41,7 @@ object VPrincipal: TVPrincipal
     Width = 166
     Height = 37
     Caption = 'Ventilador:'
-    Color = clMenuHighlight
+    Color = cl3DLight
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -32
@@ -63,7 +63,7 @@ object VPrincipal: TVPrincipal
     Width = 206
     Height = 37
     Caption = 'Device name:'
-    Color = clAqua
+    Color = cl3DLight
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -32
@@ -74,11 +74,11 @@ object VPrincipal: TVPrincipal
   end
   object Label4: TLabel
     Left = 16
-    Top = 176
+    Top = 168
     Width = 222
     Height = 37
     Caption = 'Electrovalvula:'
-    Color = clMenuHighlight
+    Color = cl3DLight
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -32
@@ -89,7 +89,7 @@ object VPrincipal: TVPrincipal
   end
   object Shape3: TShape
     Left = 272
-    Top = 176
+    Top = 168
     Width = 33
     Height = 33
     Shape = stCircle
