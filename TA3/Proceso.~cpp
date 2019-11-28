@@ -5,6 +5,7 @@
 
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
+int portstate;
 TaskHandle Read_Port_x;
 // process error reporting --------------------------------------------------
 void process_error(int32 code, char *suffix) {

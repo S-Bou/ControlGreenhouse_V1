@@ -117,7 +117,7 @@ object VPrincipal: TVPrincipal
     Left = 224
     Top = 16
     Width = 81
-    Height = 37
+    Height = 34
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -23
