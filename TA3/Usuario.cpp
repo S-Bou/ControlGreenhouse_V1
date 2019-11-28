@@ -7,6 +7,7 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
+char DeviceName[20];
 TVPrincipal *VPrincipal;
 //---------------------------------------------------------------------------
 __fastcall TVPrincipal::TVPrincipal(TComponent* Owner)
@@ -16,7 +17,7 @@ __fastcall TVPrincipal::TVPrincipal(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TVPrincipal::BotonIniciarTarjeta(TObject *Sender)
 {
-    process_init(NULL);
+    process_init();
     Label1->Enabled=true;
     Label2->Enabled=true;
     BLed1->Enabled=true;
@@ -41,13 +42,19 @@ void __fastcall TVPrincipal::IniciarTimer(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TVPrincipal::Tempo1Timer(TObject *Sender)
 {
-    int level;
-    level = estado_Led1();
-
-    if(level <= 0){
-        VPrincipal->Shape3->Brush->Color=clBlue;
+    process_read_port1();
+    int port1;
+    port1 = estado_Led();
+    VPrincipal->Edit1->Text=port1;
+    if ((port1 & 0x01) == 0){
+        VPrincipal->Shape1->Brush->Color=clRed;
     }else{
-        VPrincipal->Shape4->Brush->Color=clRed;
+        VPrincipal->Shape1->Brush->Color=clWhite;
+    }
+    if ((port1 & 0x02) == 0){
+        VPrincipal->Shape2->Brush->Color=clRed;
+    }else{
+        VPrincipal->Shape2->Brush->Color=clWhite;
     }
 
     if(VPrincipal->PTimer->Color == clYellow){  //change color of buttton timer

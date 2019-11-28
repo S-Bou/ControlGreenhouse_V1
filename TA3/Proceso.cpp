@@ -2,6 +2,7 @@
 #pragma hdrstop
 #include "Proceso.h"
 #include "ss_nidaqmx.h"
+#include "DatosComunes.h"
 
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
@@ -20,10 +21,10 @@ void process_error(int32 code, char *suffix) {
     ShowMessage(msg);   exit(1);     // force the end of the application
 }
 // process initialization ---------------------------------------------------
-void process_init(char *deviceName) {
+void process_init() {
 
     char nameP1[20];
-    strcpy(nameP1, deviceName);
+    //strcpy(nameP1, deviceName);
     strcat(nameP1, "/port1");
 
     int32 daq_error;
@@ -39,13 +40,13 @@ daq_error = DAQmxCreateDIChan(Read_Port_x, "Dev3/port1",
     if(daq_error != 0)process_error(daq_error, "process_init()->2.0");
 }
 // read port 1 pins and return state -------------------------------------------
-int process_read_port1(void) {
+void process_read_port1(void) {
     int32 daq_error;
     uInt32 data;
 
-daq_error = DAQmxReadDigitalScalarU32 (Read_Port_x, 0.0, &data,NULL);
+daq_error = DAQmxReadDigitalScalarU32 (Read_Port_x, 0.0, &data, NULL);
 
     if (daq_error != 0) process_error(daq_error,"process_read_port1()");
 
-    return(data);
+    Store_Led(data);
 }

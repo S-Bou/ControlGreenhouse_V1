@@ -20,10 +20,10 @@ void process_error(int32 code, char *suffix) {
     ShowMessage(msg);   exit(1);     // force the end of the application
 }
 // process initialization ---------------------------------------------------
-void process_init(char *deviceName) {
+void process_init() {
 
     char nameP1[20];
-    strcpy(nameP1, deviceName);
+    //strcpy(nameP1, deviceName);
     strcat(nameP1, "/port1");
 
     int32 daq_error;

@@ -1,8 +1,8 @@
 //---------------------------------------------------------------------------
 #ifndef ProcesoH
 void process_error();
-void process_init(char);
-int process_read_port1(void);
+void process_init();
+void process_read_port1(void);
 #define ProcesoH
 //---------------------------------------------------------------------------
 #endif
