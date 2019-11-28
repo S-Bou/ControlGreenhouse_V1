@@ -42,6 +42,7 @@ void __fastcall TVPrincipal::IniciarTimer(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TVPrincipal::Tempo1Timer(TObject *Sender)
 {
+    process_read_port1();
     int port1;
     port1 = estado_Led();
     VPrincipal->Edit1->Text=port1;

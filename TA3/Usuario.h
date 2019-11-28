@@ -21,11 +21,11 @@ __published:	// IDE-managed Components
     TShape *Shape2;
     TLabel *Label3;
     TEdit *Edit1;
-    TButton *BLed1;
-    TButton *BLed2;
+    TCheckBox *CheckBox1;
+    TCheckBox *CheckBox2;
+    TLabel *Label4;
     TShape *Shape3;
-    TShape *Shape4;
-    TButton *BAlternar;
+    TCheckBox *CheckBox3;
     void __fastcall BotonIniciarTarjeta(TObject *Sender);
     void __fastcall IniciarTimer(TObject *Sender);
     void __fastcall Tempo1Timer(TObject *Sender);
