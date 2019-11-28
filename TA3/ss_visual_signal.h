@@ -1,38 +1,33 @@
 //---------------------------------------------------------------------------
 
-#ifndef UsuarioH
-#define UsuarioH
+#ifndef ss_visual_signalH
+#define ss_visual_signalH
 //---------------------------------------------------------------------------
 #include <Classes.hpp>
 #include <Controls.hpp>
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
-#include <ExtCtrls.hpp>
+
+#include "ss_signal.h"
 //---------------------------------------------------------------------------
-class TVPrincipal : public TForm
+class TF_signaled : public TForm
 {
 __published:	// IDE-managed Components
-    TTimer *Tempo1;
-    TPanel *PIniciarT;
-    TPanel *PTimer;
-    TLabel *Label1;
-    TShape *Shape1;
-    TLabel *Label2;
-    TShape *Shape2;
-    TLabel *Label3;
-    TEdit *Edit1;
-    TButton *BLed1;
-    TButton *BLed2;
-    TShape *Shape3;
-    TShape *Shape4;
-    TButton *BAlternar;
-    void __fastcall BotonIniciarTarjeta(TObject *Sender);
-    void __fastcall IniciarTimer(TObject *Sender);
+   TLabel *lbSignalStr;
+   TScrollBar *sbAnalogValue;
+   TButton *btHigh;
+   TButton *btLow;
+   void __fastcall sbAnalogValueChange(TObject *Sender);
+   void __fastcall btHighClick(TObject *Sender);
+   void __fastcall btLowClick(TObject *Sender);
+   void __fastcall FormShow(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
-    __fastcall TVPrincipal(TComponent* Owner);
+   __fastcall TF_signaled(TComponent* Owner);
+   void SetSignal(Tss_signal *p);
+   void UpdateSignal(void);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TVPrincipal *VPrincipal;
+extern PACKAGE TF_signaled *F_signaled;
 //---------------------------------------------------------------------------
 #endif

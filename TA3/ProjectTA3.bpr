@@ -4,13 +4,15 @@
   <MACROS>
     <VERSION value="BCB.06.00"/>
     <PROJECT value="ProjectTA3.exe"/>
-    <OBJFILES value="ProjectTA3.obj Usuario.obj Proceso.obj DatosComunes.obj"/>
+    <OBJFILES value="ProjectTA3.obj Usuario.obj Proceso.obj DatosComunes.obj ss_daq.obj 
+      ss_daq_niusb6008.obj ss_nidaqmx.obj ss_signal.obj ss_visual_niusb6008.obj 
+      ss_visual_signal.obj"/>
     <RESFILES value="ProjectTA3.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
     <DEFFILE value=""/>
-    <RESDEPEN value="$(RESFILES) Usuario.dfm"/>
-    <LIBFILES value=""/>
+    <RESDEPEN value="$(RESFILES) Usuario.dfm ss_visual_niusb6008.dfm ss_visual_signal.dfm"/>
+    <LIBFILES value="NIDAQmx_bcb.lib"/>
     <LIBRARIES value=""/>
     <SPARELIBS value="vcl.lib rtl.lib"/>
     <PACKAGES value="vcl.bpi rtl.bpi dbrtl.bpi adortl.bpi vcldb.bpi vclx.bpi bdertl.bpi 
@@ -58,6 +60,13 @@
       <FILE FILENAME="Usuario.cpp" FORMNAME="VPrincipal" UNITNAME="Usuario" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="Proceso.cpp" FORMNAME="" UNITNAME="Proceso" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="DatosComunes.cpp" FORMNAME="" UNITNAME="DatosComunes" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_daq.cpp" FORMNAME="" UNITNAME="ss_daq.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_daq_niusb6008.cpp" FORMNAME="" UNITNAME="ss_daq_niusb6008.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_nidaqmx.cpp" FORMNAME="" UNITNAME="ss_nidaqmx.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_signal.cpp" FORMNAME="" UNITNAME="ss_signal.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_visual_niusb6008.cpp" FORMNAME="F_niusb6008" UNITNAME="ss_visual_niusb6008" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_visual_signal.cpp" FORMNAME="F_signaled" UNITNAME="ss_visual_signal" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="NIDAQmx_bcb.lib" FORMNAME="" UNITNAME="NIDAQmx_bcb.lib" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>
