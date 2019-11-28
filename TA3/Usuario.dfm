@@ -175,5 +175,6 @@ object VPrincipal: TVPrincipal
   object Tempo1: TTimer
     Enabled = False
     Interval = 200
+    OnTimer = Tempo1Timer
   end
 end

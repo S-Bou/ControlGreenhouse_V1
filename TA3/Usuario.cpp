@@ -16,7 +16,7 @@ __fastcall TVPrincipal::TVPrincipal(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TVPrincipal::BotonIniciarTarjeta(TObject *Sender)
 {
-    //process_init(NULL);
+    process_init(NULL);
     Label1->Enabled=true;
     Label2->Enabled=true;
     BLed1->Enabled=true;
@@ -39,5 +39,22 @@ void __fastcall TVPrincipal::IniciarTimer(TObject *Sender)
     }
 }
 //---------------------------------------------------------------------------
+void __fastcall TVPrincipal::Tempo1Timer(TObject *Sender)
+{
+    int level;
+    level = estado_Led1();
 
+    if(level <= 0){
+        VPrincipal->Shape3->Brush->Color=clBlue;
+    }else{
+        VPrincipal->Shape4->Brush->Color=clRed;
+    }
+
+    if(VPrincipal->PTimer->Color == clYellow){  //change color of buttton timer
+        VPrincipal->PTimer->Color = clLime;
+    }else{
+        VPrincipal->PTimer->Color = clYellow;
+    }
+}
+//---------------------------------------------------------------------------
 

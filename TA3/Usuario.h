@@ -28,6 +28,7 @@ __published:	// IDE-managed Components
     TButton *BAlternar;
     void __fastcall BotonIniciarTarjeta(TObject *Sender);
     void __fastcall IniciarTimer(TObject *Sender);
+    void __fastcall Tempo1Timer(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
     __fastcall TVPrincipal(TComponent* Owner);
