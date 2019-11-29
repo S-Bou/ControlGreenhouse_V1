@@ -23,7 +23,7 @@ __published:	// IDE-managed Components
     TLabel *Label3;
     TEdit *Edit1;
     TCheckBox *CheckBoxDiaNoche;
-    TCheckBox *CheckBox2;
+    TCheckBox *CheckBoxPuerta;
     TLabel *Label4;
     TShape *Shape3;
     TScrollBar *ScrollBar1;
@@ -37,9 +37,13 @@ __published:	// IDE-managed Components
     TLabel *Label10;
     TImage *ImageNoche;
     TImage *ImageDia;
+    TImage *ImagePCerrada;
+    TImage *ImagePAbierta;
+    TTimer *Tempo2;
     void __fastcall BotonIniciarTarjeta(TObject *Sender);
     void __fastcall IniciarTimer(TObject *Sender);
     void __fastcall Tempo1Timer(TObject *Sender);
+    void __fastcall TempoAlarma(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
     __fastcall TVPrincipal(TComponent* Owner);

@@ -26,20 +26,19 @@ void __fastcall TVPrincipal::IniciarTimer(TObject *Sender)
 {
     if(VPrincipal->Tempo1->Enabled == false){
         VPrincipal->Tempo1->Enabled = true;
-        VPrincipal->PTimer->Color = clYellow;
         VPrincipal->PTimer->Caption = "Timer OFF";
     }else{
         VPrincipal->Tempo1->Enabled = false;
-        VPrincipal->PTimer->Color = clLime;
+        VPrincipal->PTimer->Color = clBtnFace;
         VPrincipal->PTimer->Caption = "Timer ON";
     }
 }
 //---------------------------------------------------------------------------
 void __fastcall TVPrincipal::Tempo1Timer(TObject *Sender)
 {
-    process_read_port1();
-    int port1;
-    port1 = estado_Port1();
+    process_write_port0();                          //Set port0
+    process_read_port1();                           //Send data to Datos
+    int port1 = estado_Port1();
 
     process_read_ai0();
     int humedad;
@@ -59,18 +58,47 @@ void __fastcall TVPrincipal::Tempo1Timer(TObject *Sender)
     }else{
         VPrincipal->Shape1->Brush->Color=clWhite;
     }
-    if ((port1 & 0x02) == 0){                        //State of ventilation P0_1
+    if ((port1 & 0x02) != 0){                        //State of clima P0_1
         VPrincipal->Shape2->Brush->Color=clRed;
     }else{
         VPrincipal->Shape2->Brush->Color=clWhite;
     }
 
-    if(VPrincipal->CheckBoxDiaNoche->Checked==true){
+    if(VPrincipal->CheckBoxDiaNoche->Checked==true){  //CheckBox Día/Noche
+        Store_DiaNoche(0x01, PIN_ON);
         VPrincipal->ImageNoche->Visible=true;
-    }else{VPrincipal->ImageNoche->Visible=false;}
+        process_write_port0();
+    }else{
+        Store_DiaNoche(0x01, PIN_OFF);
+        VPrincipal->ImageNoche->Visible=false;
+        process_write_port0();
+    }
     if(VPrincipal->CheckBoxDiaNoche->Checked==false){
         VPrincipal->ImageDia->Visible=true;
-    }else{VPrincipal->ImageDia->Visible=false;}
+    }else{
+        VPrincipal->ImageDia->Visible=false;
+    }
+    if(VPrincipal->CheckBoxPuerta->Checked==true){  //CheckBox Puerta
+        Store_DiaNoche(0x02, PIN_ON);
+        VPrincipal->ImagePAbierta->Visible=true;
+        process_write_port0();
+    }else{
+        Store_DiaNoche(0x02, PIN_OFF);
+        VPrincipal->ImagePAbierta->Visible=false;
+        process_write_port0();
+    }
+    if(VPrincipal->CheckBoxPuerta->Checked==false){
+        VPrincipal->ImagePCerrada->Visible=true;
+    }else{
+        VPrincipal->ImagePCerrada->Visible=false;
+    }
+
+    if(humedad>80){
+        VPrincipal->Tempo2->Enabled = true;
+    }else{
+        VPrincipal->Tempo2->Enabled = false;
+        VPrincipal->Shape4->Brush->Color=clWhite;
+    }
 
     if(VPrincipal->PTimer->Color == clYellow){  //change color of buttton timer
         VPrincipal->PTimer->Color = clLime;
@@ -79,5 +107,13 @@ void __fastcall TVPrincipal::Tempo1Timer(TObject *Sender)
     }
 }
 //---------------------------------------------------------------------------
-
+void __fastcall TVPrincipal::TempoAlarma(TObject *Sender)
+{
+    if(VPrincipal->Shape4->Brush->Color==clWhite){
+        VPrincipal->Shape4->Brush->Color=clRed;
+    }else{
+        VPrincipal->Shape4->Brush->Color=clWhite;
+    }
+}
+//---------------------------------------------------------------------------
 
