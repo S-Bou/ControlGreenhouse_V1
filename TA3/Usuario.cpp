@@ -48,23 +48,29 @@ void __fastcall TVPrincipal::Tempo1Timer(TObject *Sender)
     VPrincipal->Edit2->Text=humedad;
     VPrincipal->Edit2->Text=Edit2->Text+"%";
 
-    if (humedad<20){                                //State of humity
+    if (humedad<20){                                 //State of humity AI0
         VPrincipal->Shape3->Brush->Color=clRed;
     }else{
         VPrincipal->Shape3->Brush->Color=clWhite;
     }
 
-    if ((port1 & 0x01) == 0){                        //State of lamp
+    if ((port1 & 0x01) == 0){                        //State of lamp P0_0
         VPrincipal->Shape1->Brush->Color=clRed;
     }else{
         VPrincipal->Shape1->Brush->Color=clWhite;
     }
-    if ((port1 & 0x02) == 0){                        //State of ventilation
+    if ((port1 & 0x02) == 0){                        //State of ventilation P0_1
         VPrincipal->Shape2->Brush->Color=clRed;
     }else{
         VPrincipal->Shape2->Brush->Color=clWhite;
     }
 
+    if(VPrincipal->CheckBoxDiaNoche->Checked==true){
+        VPrincipal->ImageNoche->Visible=true;
+    }else{VPrincipal->ImageNoche->Visible=false;}
+    if(VPrincipal->CheckBoxDiaNoche->Checked==false){
+        VPrincipal->ImageDia->Visible=true;
+    }else{VPrincipal->ImageDia->Visible=false;}
 
     if(VPrincipal->PTimer->Color == clYellow){  //change color of buttton timer
         VPrincipal->PTimer->Color = clLime;
@@ -73,6 +79,5 @@ void __fastcall TVPrincipal::Tempo1Timer(TObject *Sender)
     }
 }
 //---------------------------------------------------------------------------
-
 
 

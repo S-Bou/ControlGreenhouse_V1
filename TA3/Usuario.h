@@ -8,6 +8,7 @@
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
 #include <ExtCtrls.hpp>
+#include <Graphics.hpp>
 //---------------------------------------------------------------------------
 class TVPrincipal : public TForm
 {
@@ -21,7 +22,7 @@ __published:	// IDE-managed Components
     TShape *Shape2;
     TLabel *Label3;
     TEdit *Edit1;
-    TCheckBox *CheckBox1;
+    TCheckBox *CheckBoxDiaNoche;
     TCheckBox *CheckBox2;
     TLabel *Label4;
     TShape *Shape3;
@@ -34,6 +35,8 @@ __published:	// IDE-managed Components
     TLabel *Label9;
     TShape *Shape4;
     TLabel *Label10;
+    TImage *ImageNoche;
+    TImage *ImageDia;
     void __fastcall BotonIniciarTarjeta(TObject *Sender);
     void __fastcall IniciarTimer(TObject *Sender);
     void __fastcall Tempo1Timer(TObject *Sender);
