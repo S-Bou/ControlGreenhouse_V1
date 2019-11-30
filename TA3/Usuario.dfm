@@ -1,7 +1,7 @@
 object VPrincipal: TVPrincipal
   Left = 187
   Top = 125
-  Width = 362
+  Width = 346
   Height = 746
   Caption = 'Control de invernadero'
   Color = cl3DLight
@@ -29,7 +29,7 @@ object VPrincipal: TVPrincipal
     ParentFont = False
   end
   object Shape1: TShape
-    Left = 272
+    Left = 280
     Top = 64
     Width = 33
     Height = 33
@@ -51,7 +51,7 @@ object VPrincipal: TVPrincipal
     ParentFont = False
   end
   object Shape2: TShape
-    Left = 272
+    Left = 280
     Top = 128
     Width = 33
     Height = 33
@@ -63,7 +63,7 @@ object VPrincipal: TVPrincipal
     Width = 206
     Height = 37
     Caption = 'Device name:'
-    Color = clScrollBar
+    Color = cl3DLight
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -32
@@ -88,7 +88,7 @@ object VPrincipal: TVPrincipal
     ParentFont = False
   end
   object Shape3: TShape
-    Left = 272
+    Left = 280
     Top = 192
     Width = 33
     Height = 33
@@ -97,9 +97,9 @@ object VPrincipal: TVPrincipal
   object Label5: TLabel
     Left = 16
     Top = 104
-    Width = 220
+    Width = 218
     Height = 13
-    Caption = 'Apagada de d'#237'a, encendida de noche.'
+    Caption = 'Se enciende si es de noche. P1_0 = L'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -110,9 +110,9 @@ object VPrincipal: TVPrincipal
   object Label6: TLabel
     Left = 16
     Top = 168
-    Width = 261
+    Width = 227
     Height = 13
-    Caption = 'Se apaga si se dispara la alarma de la puerta.'
+    Caption = 'Se apaga si se abre la puerta. P1_1 = L'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -147,7 +147,7 @@ object VPrincipal: TVPrincipal
     ParentFont = False
   end
   object Shape4: TShape
-    Left = 272
+    Left = 280
     Top = 256
     Width = 33
     Height = 33
@@ -180,7 +180,7 @@ object VPrincipal: TVPrincipal
     ParentFont = False
   end
   object Shape5: TShape
-    Left = 272
+    Left = 280
     Top = 320
     Width = 33
     Height = 33
@@ -202,7 +202,7 @@ object VPrincipal: TVPrincipal
   object PIniciarT: TPanel
     Left = 16
     Top = 640
-    Width = 145
+    Width = 137
     Height = 49
     Caption = 'Iniciar tarjeta'
     Font.Charset = DEFAULT_CHARSET
@@ -215,9 +215,9 @@ object VPrincipal: TVPrincipal
     OnClick = BotonIniciarTarjeta
   end
   object PTimer: TPanel
-    Left = 184
+    Left = 176
     Top = 640
-    Width = 145
+    Width = 137
     Height = 49
     Caption = 'Timer ON'
     Enabled = False
@@ -247,7 +247,7 @@ object VPrincipal: TVPrincipal
   object GroupBoxEntradas: TGroupBox
     Left = 16
     Top = 384
-    Width = 313
+    Width = 297
     Height = 241
     Caption = 'Entradas'
     Color = clScrollBar
@@ -276,7 +276,7 @@ object VPrincipal: TVPrincipal
       ParentFont = False
     end
     object ImageNoche: TImage
-      Left = 232
+      Left = 216
       Top = 24
       Width = 65
       Height = 65
@@ -687,7 +687,7 @@ object VPrincipal: TVPrincipal
       Visible = False
     end
     object ImageDia: TImage
-      Left = 232
+      Left = 216
       Top = 24
       Width = 65
       Height = 65
@@ -1095,7 +1095,7 @@ object VPrincipal: TVPrincipal
         FFFFFFFFFF00}
     end
     object ImagePCerrada: TImage
-      Left = 232
+      Left = 216
       Top = 96
       Width = 65
       Height = 65
@@ -1503,7 +1503,7 @@ object VPrincipal: TVPrincipal
         FFFFFFFFFF00}
     end
     object ImagePAbierta: TImage
-      Left = 232
+      Left = 216
       Top = 96
       Width = 65
       Height = 65
@@ -1914,7 +1914,7 @@ object VPrincipal: TVPrincipal
     object CheckBoxDia: TCheckBox
       Left = 16
       Top = 24
-      Width = 217
+      Width = 193
       Height = 33
       Caption = 'Es de dia'
       Checked = True
@@ -1933,7 +1933,7 @@ object VPrincipal: TVPrincipal
     object CheckBoxPuertaAbierta: TCheckBox
       Left = 16
       Top = 128
-      Width = 217
+      Width = 193
       Height = 33
       Caption = 'Puerta abierta'
       Color = clScrollBar
@@ -1950,13 +1950,13 @@ object VPrincipal: TVPrincipal
     object ScrollBar1: TScrollBar
       Left = 16
       Top = 192
-      Width = 217
+      Width = 201
       Height = 33
       PageSize = 0
       TabOrder = 2
     end
     object Edit2: TEdit
-      Left = 240
+      Left = 224
       Top = 193
       Width = 57
       Height = 32
@@ -1971,7 +1971,7 @@ object VPrincipal: TVPrincipal
     object CheckBoxNoche: TCheckBox
       Left = 16
       Top = 56
-      Width = 217
+      Width = 193
       Height = 33
       Caption = 'Es de noche'
       Color = clScrollBar
@@ -1988,7 +1988,7 @@ object VPrincipal: TVPrincipal
     object CheckBoxPuertaCerrada: TCheckBox
       Left = 16
       Top = 96
-      Width = 217
+      Width = 193
       Height = 33
       Caption = 'Puerta cerrada'
       Checked = True
@@ -2009,9 +2009,10 @@ object VPrincipal: TVPrincipal
       Top = 128
       Width = 25
       Height = 33
+      Color = clWhite
       Enabled = False
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
+      Font.Color = clBlack
       Font.Height = -20
       Font.Name = 'MS Sans Serif'
       Font.Style = [fsBold]
@@ -2021,16 +2022,16 @@ object VPrincipal: TVPrincipal
       Visible = False
     end
   end
-  object Tempo1: TTimer
+  object TimerEstadoPuertos: TTimer
     Enabled = False
     Interval = 400
-    OnTimer = Tempo1Timer
+    OnTimer = TimerPuertos
     Top = 65528
   end
-  object Tempo2: TTimer
+  object TimerLedHumedad: TTimer
     Enabled = False
     Interval = 200
-    OnTimer = TempoAlarma
+    OnTimer = Timer_Led_Humedad
     Left = 32
     Top = 65528
   end

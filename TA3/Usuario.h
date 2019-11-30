@@ -13,7 +13,7 @@
 class TVPrincipal : public TForm
 {
 __published:	// IDE-managed Components
-    TTimer *Tempo1;
+    TTimer *TimerEstadoPuertos;
     TPanel *PIniciarT;
     TPanel *PTimer;
     TLabel *Label1;
@@ -30,7 +30,7 @@ __published:	// IDE-managed Components
     TLabel *Label9;
     TShape *Shape4;
     TLabel *Label10;
-    TTimer *Tempo2;
+    TTimer *TimerLedHumedad;
     TGroupBox *GroupBoxEntradas;
     TLabel *Label8;
     TImage *ImageNoche;
@@ -50,8 +50,8 @@ __published:	// IDE-managed Components
     TLabel *Label12;
     void __fastcall BotonIniciarTarjeta(TObject *Sender);
     void __fastcall IniciarTimer(TObject *Sender);
-    void __fastcall Tempo1Timer(TObject *Sender);
-    void __fastcall TempoAlarma(TObject *Sender);
+    void __fastcall TimerPuertos(TObject *Sender);
+    void __fastcall Timer_Led_Humedad(TObject *Sender);
     void __fastcall CheckBoxDiaClick(TObject *Sender);
     void __fastcall CheckBoxNocheClick(TObject *Sender);
     void __fastcall CheckBoxPuertaCerradaClick(TObject *Sender);

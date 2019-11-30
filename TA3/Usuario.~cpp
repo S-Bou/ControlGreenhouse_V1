@@ -10,6 +10,8 @@
 int contador=1;
 char DeviceName[20];
 TVPrincipal *VPrincipal;
+TVPrincipal *EsDeNoche;
+TVPrincipal *EsDeDia;
 //---------------------------------------------------------------------------
 __fastcall TVPrincipal::TVPrincipal(TComponent* Owner)
     : TForm(Owner)
@@ -26,17 +28,17 @@ void __fastcall TVPrincipal::BotonIniciarTarjeta(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TVPrincipal::IniciarTimer(TObject *Sender)
 {
-    if(VPrincipal->Tempo1->Enabled == false){               //Button timer1
-        VPrincipal->Tempo1->Enabled = true;
+    if(VPrincipal->TimerEstadoPuertos->Enabled == false){ //Button timer ON/OFF
+        VPrincipal->TimerEstadoPuertos->Enabled = true;
         VPrincipal->PTimer->Caption = "Timer OFF";
     }else{
-        VPrincipal->Tempo1->Enabled = false;
+        VPrincipal->TimerEstadoPuertos->Enabled = false;
         VPrincipal->PTimer->Color = clBtnFace;
         VPrincipal->PTimer->Caption = "Timer ON";
     }
 }
 //---------------------------------------------------------------------------
-void __fastcall TVPrincipal::Tempo1Timer(TObject *Sender)
+void __fastcall TVPrincipal::TimerPuertos(TObject *Sender)
 {
     process_write_port0();                          //Set port0
     process_read_port1();                           //Send data to Datos
@@ -54,11 +56,14 @@ void __fastcall TVPrincipal::Tempo1Timer(TObject *Sender)
     }else{
         VPrincipal->Shape3->Brush->Color=clWhite;
     }
-
-    if ((port1 & 0x01) == 0){                        //State of lamp P0_0
-        VPrincipal->Shape1->Brush->Color=clRed;
+    if ((port1 & 0x01) == 0){
+        CheckBoxNocheClick(EsDeNoche);               //State of lamp P0_0
+        VPrincipal->CheckBoxDia->Checked=false;
+        VPrincipal->CheckBoxNoche->Checked=true;
     }else{
-        VPrincipal->Shape1->Brush->Color=clWhite;
+        CheckBoxDiaClick(EsDeDia);
+        VPrincipal->CheckBoxDia->Checked=true;
+        VPrincipal->CheckBoxNoche->Checked=false;
     }
     if ((port1 & 0x02) != 0){                        //State of clima P0_1
         VPrincipal->Shape2->Brush->Color=clRed;
@@ -67,9 +72,9 @@ void __fastcall TVPrincipal::Tempo1Timer(TObject *Sender)
     }
 
     if(humedad>80){
-        VPrincipal->Tempo2->Enabled = true;
+        VPrincipal->TimerLedHumedad->Enabled = true;
     }else{
-        VPrincipal->Tempo2->Enabled = false;
+        VPrincipal->TimerLedHumedad->Enabled = false;
         VPrincipal->Shape4->Brush->Color=clWhite;
     }
 
@@ -80,7 +85,7 @@ void __fastcall TVPrincipal::Tempo1Timer(TObject *Sender)
     }
 }
 //---------------------------------------------------------------------------
-void __fastcall TVPrincipal::TempoAlarma(TObject *Sender)
+void __fastcall TVPrincipal::Timer_Led_Humedad(TObject *Sender)
 {
     if(VPrincipal->Shape4->Brush->Color==clWhite){            //Timer alarma
         VPrincipal->Shape4->Brush->Color=clRed;               //Parpadeo led
@@ -90,31 +95,35 @@ void __fastcall TVPrincipal::TempoAlarma(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 void __fastcall TVPrincipal::CheckBoxDiaClick(TObject *Sender)
-{
-    if(VPrincipal->CheckBoxDia->Checked==true){               //CheckBox Día
-        Store_Port0(0x01, PIN_OFF);
+{                                                             
+    if(VPrincipal->CheckBoxDia->Checked==true && Sender==EsDeDia){
+        VPrincipal->Shape1->Brush->Color=clWhite;
+        Store_Port0(0x01, PIN_ON);                           //CheckBox Día
         VPrincipal->ImageDia->Visible=true;
         VPrincipal->ImageNoche->Visible=false;
         VPrincipal->CheckBoxNoche->Checked=false;
         process_write_port0();
+        VPrincipal->CheckBoxDia->Checked=true;
     }
 }
 //---------------------------------------------------------------------------
 void __fastcall TVPrincipal::CheckBoxNocheClick(TObject *Sender)
 {
-    if(VPrincipal->CheckBoxNoche->Checked==true){             //CheckBox Noche
-        Store_Port0(0x01, PIN_ON);
+    if(VPrincipal->CheckBoxNoche->Checked==true && Sender==EsDeNoche){
+        VPrincipal->Shape1->Brush->Color=clRed;
+        Store_Port0(0x01, PIN_OFF);                           //CheckBox Noche
         VPrincipal->ImageNoche->Visible=true;
         VPrincipal->ImageDia->Visible=false;
         VPrincipal->CheckBoxDia->Checked=false;
         process_write_port0();
+        VPrincipal->CheckBoxNoche->Checked=true;
     }
 }
 //---------------------------------------------------------------------------
 void __fastcall TVPrincipal::CheckBoxPuertaCerradaClick(TObject *Sender)
 {
     if(VPrincipal->CheckBoxPuertaCerrada->Checked==true){
-        Store_Port0(0x02, PIN_OFF);                   //CheckBox puerta cerrada
+        Store_Port0(0x02, PIN_ON);                   //CheckBox puerta cerrada
         VPrincipal->ImagePAbierta->Visible=false;
         VPrincipal->ImagePCerrada->Visible=true;
         VPrincipal->CheckBoxPuertaAbierta->Checked=false;
@@ -129,7 +138,7 @@ void __fastcall TVPrincipal::CheckBoxPuertaCerradaClick(TObject *Sender)
 void __fastcall TVPrincipal::CheckBoxPuertaAbiertaClick(TObject *Sender)
 {
     if(VPrincipal->CheckBoxPuertaAbierta->Checked==true){
-        Store_Port0(0x02, PIN_ON);                   //CheckBox puerta abierta
+        Store_Port0(0x02, PIN_OFF);                   //CheckBox puerta abierta
         VPrincipal->ImagePAbierta->Visible=true;
         VPrincipal->ImagePCerrada->Visible=false;
         VPrincipal->CheckBoxPuertaCerrada->Checked=false;
@@ -157,4 +166,6 @@ void __fastcall TVPrincipal::TimerPuertaAbierta(TObject *Sender)
     }
 }
 //---------------------------------------------------------------------------
+
+
 
