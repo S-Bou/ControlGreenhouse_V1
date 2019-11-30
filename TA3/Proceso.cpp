@@ -48,7 +48,7 @@ daq_error = DAQmxCreateDIChan(Read_Port1, nameP1,
             "",DAQmx_Val_ChanForAllLines);
     if(daq_error != 0)process_error(daq_error, "process_init()->2.0");
 
-daq_error = DAQmxCreateDOChan(Write_Port1, "Dev3/port0",
+daq_error = DAQmxCreateDOChan(Write_Port1, "Dev3/port1",
             "",DAQmx_Val_ChanForAllLines);
     if(daq_error != 0)process_error(daq_error, "process_init()->2.1");
 
@@ -56,7 +56,7 @@ daq_error = DAQmxCreateAIVoltageChan(Read_AI0, nameAI0,
             "", DAQmx_Val_RSE, 0.0, 10.0, DAQmx_Val_Volts, NULL);
     if(daq_error != 0)process_error(daq_error, "process_init()->2.2");
 
-Store_DiaNoche(0xFF, PIN_OFF);
+Store_Port0(0xFF, PIN_OFF);
 
 }
 // read port 1 pins and return state -------------------------------------------

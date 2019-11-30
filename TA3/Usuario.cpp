@@ -7,6 +7,7 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
+int contador=1;
 char DeviceName[20];
 TVPrincipal *VPrincipal;
 //---------------------------------------------------------------------------
@@ -17,14 +18,15 @@ __fastcall TVPrincipal::TVPrincipal(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TVPrincipal::BotonIniciarTarjeta(TObject *Sender)
 {
-    strcpy(DeviceName, VPrincipal->Edit1->Text.c_str());
+    strcpy(DeviceName, VPrincipal->Edit1->Text.c_str());   //Button iniciar
     process_init(DeviceName);
     PTimer->Enabled=true;
+    VPrincipal->GroupBoxEntradas->Enabled=true;
 }
 //---------------------------------------------------------------------------
 void __fastcall TVPrincipal::IniciarTimer(TObject *Sender)
 {
-    if(VPrincipal->Tempo1->Enabled == false){
+    if(VPrincipal->Tempo1->Enabled == false){               //Button timer1
         VPrincipal->Tempo1->Enabled = true;
         VPrincipal->PTimer->Caption = "Timer OFF";
     }else{
@@ -64,35 +66,6 @@ void __fastcall TVPrincipal::Tempo1Timer(TObject *Sender)
         VPrincipal->Shape2->Brush->Color=clWhite;
     }
 
-    if(VPrincipal->CheckBoxDiaNoche->Checked==true){  //CheckBox Día/Noche
-        Store_DiaNoche(0x01, PIN_ON);
-        VPrincipal->ImageNoche->Visible=true;
-        process_write_port0();
-    }else{
-        Store_DiaNoche(0x01, PIN_OFF);
-        VPrincipal->ImageNoche->Visible=false;
-        process_write_port0();
-    }
-    if(VPrincipal->CheckBoxDiaNoche->Checked==false){
-        VPrincipal->ImageDia->Visible=true;
-    }else{
-        VPrincipal->ImageDia->Visible=false;
-    }
-    if(VPrincipal->CheckBoxPuerta->Checked==true){  //CheckBox Puerta
-        Store_DiaNoche(0x02, PIN_ON);
-        VPrincipal->ImagePAbierta->Visible=true;
-        process_write_port0();
-    }else{
-        Store_DiaNoche(0x02, PIN_OFF);
-        VPrincipal->ImagePAbierta->Visible=false;
-        process_write_port0();
-    }
-    if(VPrincipal->CheckBoxPuerta->Checked==false){
-        VPrincipal->ImagePCerrada->Visible=true;
-    }else{
-        VPrincipal->ImagePCerrada->Visible=false;
-    }
-
     if(humedad>80){
         VPrincipal->Tempo2->Enabled = true;
     }else{
@@ -109,10 +82,78 @@ void __fastcall TVPrincipal::Tempo1Timer(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TVPrincipal::TempoAlarma(TObject *Sender)
 {
-    if(VPrincipal->Shape4->Brush->Color==clWhite){
-        VPrincipal->Shape4->Brush->Color=clRed;
+    if(VPrincipal->Shape4->Brush->Color==clWhite){            //Timer alarma
+        VPrincipal->Shape4->Brush->Color=clRed;               //Parpadeo led
     }else{
         VPrincipal->Shape4->Brush->Color=clWhite;
+    }
+}
+//---------------------------------------------------------------------------
+void __fastcall TVPrincipal::CheckBoxDiaClick(TObject *Sender)
+{
+    if(VPrincipal->CheckBoxDia->Checked==true){               //CheckBox Día
+        Store_Port0(0x01, PIN_OFF);
+        VPrincipal->ImageDia->Visible=true;
+        VPrincipal->ImageNoche->Visible=false;
+        VPrincipal->CheckBoxNoche->Checked=false;
+        process_write_port0();
+    }
+}
+//---------------------------------------------------------------------------
+void __fastcall TVPrincipal::CheckBoxNocheClick(TObject *Sender)
+{
+    if(VPrincipal->CheckBoxNoche->Checked==true){             //CheckBox Noche
+        Store_Port0(0x01, PIN_ON);
+        VPrincipal->ImageNoche->Visible=true;
+        VPrincipal->ImageDia->Visible=false;
+        VPrincipal->CheckBoxDia->Checked=false;
+        process_write_port0();
+    }
+}
+//---------------------------------------------------------------------------
+void __fastcall TVPrincipal::CheckBoxPuertaCerradaClick(TObject *Sender)
+{
+    if(VPrincipal->CheckBoxPuertaCerrada->Checked==true){
+        Store_Port0(0x02, PIN_OFF);                   //CheckBox puerta cerrada
+        VPrincipal->ImagePAbierta->Visible=false;
+        VPrincipal->ImagePCerrada->Visible=true;
+        VPrincipal->CheckBoxPuertaAbierta->Checked=false;
+        process_write_port0();
+    }
+    VPrincipal->TimerPAbierta->Enabled=false;
+    VPrincipal->ContadorPA->Visible=false;
+    VPrincipal->Shape5->Brush->Color=clWhite;
+    contador=1;
+}
+//---------------------------------------------------------------------------
+void __fastcall TVPrincipal::CheckBoxPuertaAbiertaClick(TObject *Sender)
+{
+    if(VPrincipal->CheckBoxPuertaAbierta->Checked==true){
+        Store_Port0(0x02, PIN_ON);                   //CheckBox puerta abierta
+        VPrincipal->ImagePAbierta->Visible=true;
+        VPrincipal->ImagePCerrada->Visible=false;
+        VPrincipal->CheckBoxPuertaCerrada->Checked=false;
+        process_write_port0();
+    }
+    VPrincipal->TimerPAbierta->Enabled=true;
+}
+//---------------------------------------------------------------------------
+void __fastcall TVPrincipal::TimerPuertaAbierta(TObject *Sender)
+{                                                        
+    if(contador==6){                                     //Timer alarma puerta
+        if(VPrincipal->Shape5->Brush->Color==clWhite){   //Parpadeo led
+            VPrincipal->Shape5->Brush->Color=clRed;
+            VPrincipal->ContadorPA->Color=clRed;
+        }else{
+            VPrincipal->Shape5->Brush->Color=clWhite;
+            VPrincipal->ContadorPA->Color=clWhite;
+        }
+    VPrincipal->ContadorPA->Text=contador;
+    }
+    if(contador<6){
+    VPrincipal->ContadorPA->Visible=true;
+    VPrincipal->ContadorPA->Text=contador;
+    contador++;
     }
 }
 //---------------------------------------------------------------------------

@@ -7,7 +7,7 @@
 #pragma package(smart_init)
 static int port1;
 static int humedad;
-static int Wport1;
+static int port0;
 static int estadopin;
 
 void Store_Port1(int data){
@@ -29,12 +29,12 @@ int estado_AI0(){
     return (humedad);
 }
 
-void Store_DiaNoche(int MaskBit, int StatePin){
-    Wport1 = MaskBit;
+void Store_Port0(int MaskBit, int StatePin){
+    port0 = MaskBit;
     estadopin = StatePin;
 }
 int estado_Wport1(void){
-    return (Wport1);
+    return (port0);
 }
 int estado_Pin(void){
     return (estadopin);
