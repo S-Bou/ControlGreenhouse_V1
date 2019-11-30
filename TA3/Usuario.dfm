@@ -1,7 +1,7 @@
 object VPrincipal: TVPrincipal
-  Left = 192
+  Left = 187
   Top = 125
-  Width = 346
+  Width = 362
   Height = 746
   Caption = 'Control de invernadero'
   Color = cl3DLight
@@ -202,7 +202,7 @@ object VPrincipal: TVPrincipal
   object PIniciarT: TPanel
     Left = 16
     Top = 640
-    Width = 137
+    Width = 145
     Height = 49
     Caption = 'Iniciar tarjeta'
     Font.Charset = DEFAULT_CHARSET
@@ -215,9 +215,9 @@ object VPrincipal: TVPrincipal
     OnClick = BotonIniciarTarjeta
   end
   object PTimer: TPanel
-    Left = 176
+    Left = 184
     Top = 640
-    Width = 137
+    Width = 145
     Height = 49
     Caption = 'Timer ON'
     Enabled = False
@@ -245,7 +245,7 @@ object VPrincipal: TVPrincipal
     Text = 'Dev3'
   end
   object GroupBoxEntradas: TGroupBox
-    Left = 8
+    Left = 16
     Top = 384
     Width = 313
     Height = 241
