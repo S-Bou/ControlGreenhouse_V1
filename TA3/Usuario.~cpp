@@ -58,12 +58,8 @@ void __fastcall TVPrincipal::TimerPuertos(TObject *Sender)
     }
     if ((port1 & 0x01) == 0){
         CheckBoxNocheClick(EsDeNoche);               //State of lamp P0_0
-        VPrincipal->CheckBoxDia->Checked=false;
-        VPrincipal->CheckBoxNoche->Checked=true;
     }else{
         CheckBoxDiaClick(EsDeDia);
-        VPrincipal->CheckBoxDia->Checked=true;
-        VPrincipal->CheckBoxNoche->Checked=false;
     }
     if ((port1 & 0x02) != 0){                        //State of clima P0_1
         VPrincipal->Shape2->Brush->Color=clRed;
@@ -96,27 +92,25 @@ void __fastcall TVPrincipal::Timer_Led_Humedad(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TVPrincipal::CheckBoxDiaClick(TObject *Sender)
 {                                                             
-    if(VPrincipal->CheckBoxDia->Checked==true && Sender==EsDeDia){
+    if(VPrincipal->CheckBoxDia->Checked==true){
         VPrincipal->Shape1->Brush->Color=clWhite;
         Store_Port0(0x01, PIN_ON);                           //CheckBox Día
         VPrincipal->ImageDia->Visible=true;
         VPrincipal->ImageNoche->Visible=false;
         VPrincipal->CheckBoxNoche->Checked=false;
         process_write_port0();
-        VPrincipal->CheckBoxDia->Checked=true;
     }
 }
 //---------------------------------------------------------------------------
 void __fastcall TVPrincipal::CheckBoxNocheClick(TObject *Sender)
 {
-    if(VPrincipal->CheckBoxNoche->Checked==true && Sender==EsDeNoche){
+    if(VPrincipal->CheckBoxNoche->Checked==true){
         VPrincipal->Shape1->Brush->Color=clRed;
         Store_Port0(0x01, PIN_OFF);                           //CheckBox Noche
         VPrincipal->ImageNoche->Visible=true;
         VPrincipal->ImageDia->Visible=false;
         VPrincipal->CheckBoxDia->Checked=false;
         process_write_port0();
-        VPrincipal->CheckBoxNoche->Checked=true;
     }
 }
 //---------------------------------------------------------------------------
