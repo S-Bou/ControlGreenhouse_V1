@@ -8,12 +8,14 @@
       ss_daq_niusb6008.obj ss_nidaqmx.obj ss_signal.obj ss_visual_niusb6008.obj 
       ss_visual_signal.obj DatosComunes.obj Proceso.obj ProjectTA3.obj 
       ss_daq.obj ss_daq_niusb6008.obj ss_nidaqmx.obj ss_signal.obj 
-      ss_visual_niusb6008.obj ss_visual_signal.obj Usuario.obj"/>
+      ss_visual_niusb6008.obj ss_visual_signal.obj Usuario.obj 
+      VentanaPuertaAbierta.obj"/>
     <RESFILES value="ProjectTA3.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
     <DEFFILE value=""/>
-    <RESDEPEN value="$(RESFILES) Usuario.dfm ss_visual_niusb6008.dfm ss_visual_signal.dfm"/>
+    <RESDEPEN value="$(RESFILES) Usuario.dfm ss_visual_niusb6008.dfm ss_visual_signal.dfm 
+      VentanaPuertaAbierta.dfm"/>
     <LIBFILES value="NIDAQmx_bcb.lib"/>
     <LIBRARIES value=""/>
     <SPARELIBS value="vcl.lib rtl.lib"/>
@@ -110,6 +112,7 @@
       <FILE FILENAME="Usuario.dfm" FORMNAME="" UNITNAME="Usuario.dfm" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="Usuario.h" FORMNAME="" UNITNAME="Usuario.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="Usuario.obj" FORMNAME="" UNITNAME="Usuario.obj" CONTAINERID="OBJTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="VentanaPuertaAbierta.cpp" FORMNAME="VAlarmaPuerta" UNITNAME="VentanaPuertaAbierta" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>

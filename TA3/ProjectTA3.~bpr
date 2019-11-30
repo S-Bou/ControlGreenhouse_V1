@@ -6,12 +6,16 @@
     <PROJECT value="ProjectTA3.exe"/>
     <OBJFILES value="ProjectTA3.obj Usuario.obj Proceso.obj DatosComunes.obj ss_daq.obj 
       ss_daq_niusb6008.obj ss_nidaqmx.obj ss_signal.obj ss_visual_niusb6008.obj 
-      ss_visual_signal.obj"/>
+      ss_visual_signal.obj DatosComunes.obj Proceso.obj ProjectTA3.obj 
+      ss_daq.obj ss_daq_niusb6008.obj ss_nidaqmx.obj ss_signal.obj 
+      ss_visual_niusb6008.obj ss_visual_signal.obj Usuario.obj 
+      VentanaPuertaAbierta.obj"/>
     <RESFILES value="ProjectTA3.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
     <DEFFILE value=""/>
-    <RESDEPEN value="$(RESFILES) Usuario.dfm ss_visual_niusb6008.dfm ss_visual_signal.dfm"/>
+    <RESDEPEN value="$(RESFILES) Usuario.dfm ss_visual_niusb6008.dfm ss_visual_signal.dfm 
+      VentanaPuertaAbierta.dfm"/>
     <LIBFILES value="NIDAQmx_bcb.lib"/>
     <LIBRARIES value=""/>
     <SPARELIBS value="vcl.lib rtl.lib"/>
@@ -67,6 +71,48 @@
       <FILE FILENAME="ss_visual_niusb6008.cpp" FORMNAME="F_niusb6008" UNITNAME="ss_visual_niusb6008" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="ss_visual_signal.cpp" FORMNAME="F_signaled" UNITNAME="ss_visual_signal" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="NIDAQmx_bcb.lib" FORMNAME="" UNITNAME="NIDAQmx_bcb.lib" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="DatosComunes.~cpp" FORMNAME="" UNITNAME="DatosComunes.~cpp" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="DatosComunes.~h" FORMNAME="" UNITNAME="DatosComunes.~h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="DatosComunes.h" FORMNAME="" UNITNAME="DatosComunes.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="DatosComunes.obj" FORMNAME="" UNITNAME="DatosComunes.obj" CONTAINERID="OBJTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="NIDAQmx.h" FORMNAME="" UNITNAME="NIDAQmx.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Proceso.~cpp" FORMNAME="" UNITNAME="Proceso.~cpp" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Proceso.~h" FORMNAME="" UNITNAME="Proceso.~h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Proceso.h" FORMNAME="" UNITNAME="Proceso.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Proceso.obj" FORMNAME="" UNITNAME="Proceso.obj" CONTAINERID="OBJTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ProjectTA3.~bpr" FORMNAME="" UNITNAME="ProjectTA3.~bpr" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ProjectTA3.~cpp" FORMNAME="" UNITNAME="ProjectTA3.~cpp" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ProjectTA3.bpr" FORMNAME="" UNITNAME="ProjectTA3.bpr" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ProjectTA3.obj" FORMNAME="" UNITNAME="ProjectTA3.obj" CONTAINERID="OBJTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ProjectTA3.tds" FORMNAME="" UNITNAME="ProjectTA3.tds" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_daq.h" FORMNAME="" UNITNAME="ss_daq.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_daq.obj" FORMNAME="" UNITNAME="ss_daq.obj" CONTAINERID="OBJTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_daq_niusb6008.h" FORMNAME="" UNITNAME="ss_daq_niusb6008.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_daq_niusb6008.obj" FORMNAME="" UNITNAME="ss_daq_niusb6008.obj" CONTAINERID="OBJTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_nidaqmx.h" FORMNAME="" UNITNAME="ss_nidaqmx.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_nidaqmx.obj" FORMNAME="" UNITNAME="ss_nidaqmx.obj" CONTAINERID="OBJTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_niusb6008b.ico" FORMNAME="" UNITNAME="ss_niusb6008b.ico" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_niusb6008b.png" FORMNAME="" UNITNAME="ss_niusb6008b.png" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_signal.h" FORMNAME="" UNITNAME="ss_signal.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_signal.obj" FORMNAME="" UNITNAME="ss_signal.obj" CONTAINERID="OBJTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_version.h" FORMNAME="" UNITNAME="ss_version.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_visual_niusb6008.ddp" FORMNAME="" UNITNAME="ss_visual_niusb6008.ddp" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_visual_niusb6008.dfm" FORMNAME="" UNITNAME="ss_visual_niusb6008.dfm" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_visual_niusb6008.h" FORMNAME="" UNITNAME="ss_visual_niusb6008.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_visual_niusb6008.obj" FORMNAME="" UNITNAME="ss_visual_niusb6008.obj" CONTAINERID="OBJTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_visual_signal.ddp" FORMNAME="" UNITNAME="ss_visual_signal.ddp" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_visual_signal.dfm" FORMNAME="" UNITNAME="ss_visual_signal.dfm" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_visual_signal.h" FORMNAME="" UNITNAME="ss_visual_signal.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ss_visual_signal.obj" FORMNAME="" UNITNAME="ss_visual_signal.obj" CONTAINERID="OBJTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Usuario.~cpp" FORMNAME="" UNITNAME="Usuario.~cpp" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Usuario.~ddp" FORMNAME="" UNITNAME="Usuario.~ddp" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Usuario.~dfm" FORMNAME="" UNITNAME="Usuario.~dfm" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Usuario.~h" FORMNAME="" UNITNAME="Usuario.~h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Usuario.ddp" FORMNAME="" UNITNAME="Usuario.ddp" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Usuario.dfm" FORMNAME="" UNITNAME="Usuario.dfm" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Usuario.h" FORMNAME="" UNITNAME="Usuario.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Usuario.obj" FORMNAME="" UNITNAME="Usuario.obj" CONTAINERID="OBJTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="VentanaPuertaAbierta.cpp" FORMNAME="VAlarmaPuerta" UNITNAME="VentanaPuertaAbierta" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>

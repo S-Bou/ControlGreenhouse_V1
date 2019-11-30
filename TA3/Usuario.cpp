@@ -4,6 +4,7 @@
 #include "Proceso.h"
 #include "DatosComunes.h"
 #include "Usuario.h"
+#include "VentanaPuertaAbierta.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -14,6 +15,7 @@ TVPrincipal *EsDeNoche;
 TVPrincipal *EsDeDia;
 TVPrincipal *PuertaAbierta;
 TVPrincipal *PuertaCerrada;
+TVPrincipal *reinicio;
 //---------------------------------------------------------------------------
 __fastcall TVPrincipal::TVPrincipal(TComponent* Owner)
     : TForm(Owner)
@@ -69,7 +71,6 @@ void __fastcall TVPrincipal::TimerPuertos(TObject *Sender)
     }else{
         CheckBoxPuertaAbiertaClick(PuertaAbierta);
     }
-
     if(humedad>80){
         VPrincipal->TimerLedHumedad->Enabled = true;
     }else{
@@ -170,11 +171,19 @@ void __fastcall TVPrincipal::TimerPuertaAbierta(TObject *Sender)
         if(VPrincipal->Shape5->Brush->Color==clWhite){   //Parpadeo led
             VPrincipal->Shape5->Brush->Color=clRed;
             VPrincipal->ContadorPA->Color=clRed;
+            VAlarmaPuerta->Label1->Font->Color=clYellow;
         }else{
             VPrincipal->Shape5->Brush->Color=clWhite;
             VPrincipal->ContadorPA->Color=clWhite;
+            VAlarmaPuerta->Label1->Font->Color=clBlack;
         }
     VPrincipal->ContadorPA->Text=contador;
+    VAlarmaPuerta->Show();
+    }
+    if(Sender==reinicio){
+        VPrincipal->Shape5->Brush->Color=clWhite;
+        VPrincipal->ContadorPA->Color=clWhite;
+        contador=0;
     }
     if(contador<6){
     VPrincipal->ContadorPA->Visible=true;
