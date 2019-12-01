@@ -10,6 +10,7 @@
 #include <ExtCtrls.hpp>
 #include <Graphics.hpp>
 //---------------------------------------------------------------------------
+double redondeo(double);
 class TVPrincipal : public TForm
 {
 __published:	// IDE-managed Components
@@ -61,6 +62,9 @@ __published:	// IDE-managed Components
     TShape *Shape8;
     TShape *Shape9;
     TShape *Shape10;
+    TImage *Image1;
+    TImage *Image2;
+    TEdit *contadorHU;
     void __fastcall BotonIniciarTarjeta(TObject *Sender);
     void __fastcall IniciarTimer(TObject *Sender);
     void __fastcall TimerPuertos(TObject *Sender);
