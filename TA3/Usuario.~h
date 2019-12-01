@@ -64,7 +64,7 @@ __published:	// IDE-managed Components
     TShape *Shape10;
     TImage *Image1;
     TImage *Image2;
-    TEdit *contadorHU;
+    TEdit *ContadorHU;
     void __fastcall BotonIniciarTarjeta(TObject *Sender);
     void __fastcall IniciarTimer(TObject *Sender);
     void __fastcall TimerPuertos(TObject *Sender);

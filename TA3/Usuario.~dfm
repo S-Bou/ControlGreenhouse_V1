@@ -2635,7 +2635,7 @@ object VPrincipal: TVPrincipal
     Text = '5'
     Visible = False
   end
-  object contadorHU: TEdit
+  object ContadorHU: TEdit
     Left = 328
     Top = 320
     Width = 25

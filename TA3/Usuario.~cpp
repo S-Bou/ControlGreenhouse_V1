@@ -94,10 +94,7 @@ void __fastcall TVPrincipal::TimerPuertos(TObject *Sender)
         CheckBoxPuertaAbiertaClick(PuertaAbierta);
     }
     if(humedad>160){                                  //State of fan P0_3
-        VPrincipal->TimerLedHumedad->Enabled = true;
-        VPrincipal->Shape6->Brush->Color=clRed;
-        Store_Port0(0x08, PIN_ON);
-        process_write_port0();
+        VPrincipal->TimerLedHumedad->Enabled=true;
     }else{
         VPrincipal->TimerLedHumedad->Enabled = false;
         VPrincipal->Shape4->Brush->Color=clWhite;
@@ -119,14 +116,22 @@ void __fastcall TVPrincipal::TimerPuertos(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TVPrincipal::Timer_Led_Humedad(TObject *Sender)
 {
-    if(VPrincipal->Shape4->Brush->Color==clWhite){      //Parpadeo led humedad
-        VPrincipal->Shape4->Brush->Color=clRed;
-    }else{
-        VPrincipal->Shape4->Brush->Color=clWhite;
+    if(contador==6){                                     //Timer alarma humedad
+        if(VPrincipal->Shape4->Brush->Color==clWhite){
+            VPrincipal->Shape4->Brush->Color=clRed;
+            VPrincipal->ContadorHU->Color=clWhite;
+        }else{
+            VPrincipal->Shape4->Brush->Color=clWhite;
+            VPrincipal->ContadorHU->Color=clRed;
+        }
+    Store_Port0(0x08, PIN_ON);
+    VPrincipal->Shape6->Brush->Color=clRed;
+    VPrincipal->ContadorHU->Text=conthume;
+    process_write_port0();
     }
     if(conthume<6){
     VPrincipal->ContadorHU->Visible=true;
-    VPrincipal->ContadorHU->Text=contador;
+    VPrincipal->ContadorHU->Text=conthume;
     conthume++;
     }
 }
@@ -202,7 +207,7 @@ void __fastcall TVPrincipal::CheckBoxPuertaAbiertaClick(TObject *Sender)
 void __fastcall TVPrincipal::TimerPuertaAbierta(TObject *Sender)
 {                                                        
     if(contador==6){                                     //Timer alarma puerta
-        if(VPrincipal->Shape5->Brush->Color==clWhite){   //Parpadeo led
+        if(VPrincipal->Shape5->Brush->Color==clWhite){
             VPrincipal->Shape5->Brush->Color=clRed;
             VPrincipal->ContadorPA->Color=clWhite;
             VAlarmaPuerta->Label1->Font->Color=clYellow;

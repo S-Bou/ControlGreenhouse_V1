@@ -99,8 +99,10 @@ void __fastcall TVPrincipal::TimerPuertos(TObject *Sender)
         VPrincipal->TimerLedHumedad->Enabled = false;
         VPrincipal->Shape4->Brush->Color=clWhite;
         VPrincipal->Shape6->Brush->Color=clWhite;
+        VPrincipal->ContadorHU->Visible=false;
         Store_Port0(0x08, PIN_OFF);
         process_write_port0();
+        conthume=0;
     }
 
     if(VPrincipal->PTimer->Color == clYellow){  //change color of buttton timer
@@ -116,7 +118,7 @@ void __fastcall TVPrincipal::TimerPuertos(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TVPrincipal::Timer_Led_Humedad(TObject *Sender)
 {
-    if(contador==6){                                     //Timer alarma humedad
+    if(conthume==6){                                     //Timer alarma humedad
         if(VPrincipal->Shape4->Brush->Color==clWhite){
             VPrincipal->Shape4->Brush->Color=clRed;
             VPrincipal->ContadorHU->Color=clWhite;
