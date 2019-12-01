@@ -7,10 +7,9 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
-//extern int contador;
 TVAlarmaPuerta *VAlarmaPuerta;
-TVAlarmaPuerta *PuertaCerrada;
-TVPrincipal *reinicio;
+extern TVPrincipal *PuertaCerrada;
+extern TVPrincipal *reinicio;
 //---------------------------------------------------------------------------
 __fastcall TVAlarmaPuerta::TVAlarmaPuerta(TComponent* Owner)
     : TForm(Owner)

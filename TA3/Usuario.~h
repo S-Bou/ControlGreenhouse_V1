@@ -44,10 +44,13 @@ __published:	// IDE-managed Components
     TCheckBox *CheckBoxNoche;
     TCheckBox *CheckBoxPuertaCerrada;
     TTimer *TimerPAbierta;
-    TEdit *ContadorPA;
     TLabel *Label11;
     TShape *Shape5;
     TLabel *Label12;
+    TLabel *Label13;
+    TLabel *Label14;
+    TLabel *Label15;
+    TEdit *ContadorPA;
     void __fastcall BotonIniciarTarjeta(TObject *Sender);
     void __fastcall IniciarTimer(TObject *Sender);
     void __fastcall TimerPuertos(TObject *Sender);

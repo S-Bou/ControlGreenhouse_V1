@@ -1,8 +1,8 @@
 object VAlarmaPuerta: TVAlarmaPuerta
-  Left = 548
-  Top = 418
+  Left = 696
+  Top = 175
   Width = 402
-  Height = 257
+  Height = 277
   Caption = 'Alarma de puerta abierta'
   Color = clRed
   Font.Charset = DEFAULT_CHARSET
@@ -41,9 +41,22 @@ object VAlarmaPuerta: TVAlarmaPuerta
     Font.Style = [fsBold]
     ParentFont = False
   end
+  object Label3: TLabel
+    Left = 16
+    Top = 120
+    Width = 355
+    Height = 37
+    Caption = 'Climatizaci'#243'n detenida.'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -32
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
   object BAceptar: TButton
-    Left = 32
-    Top = 152
+    Left = 120
+    Top = 176
     Width = 145
     Height = 41
     Caption = 'Aceptar'
@@ -55,20 +68,5 @@ object VAlarmaPuerta: TVAlarmaPuerta
     ParentFont = False
     TabOrder = 0
     OnClick = BAceptarClick
-  end
-  object BCerrarPuerta: TButton
-    Left = 208
-    Top = 152
-    Width = 145
-    Height = 41
-    Caption = 'Cerrar puerta'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -19
-    Font.Name = 'MS Sans Serif'
-    Font.Style = [fsBold]
-    ParentFont = False
-    TabOrder = 1
-    OnClick = BCerrarPuertaClick
   end
 end

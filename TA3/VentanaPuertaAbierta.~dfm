@@ -1,6 +1,6 @@
 object VAlarmaPuerta: TVAlarmaPuerta
-  Left = 548
-  Top = 418
+  Left = 680
+  Top = 271
   Width = 402
   Height = 257
   Caption = 'Alarma de puerta abierta'

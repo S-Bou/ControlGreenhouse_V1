@@ -28,6 +28,7 @@ void __fastcall TVPrincipal::BotonIniciarTarjeta(TObject *Sender)
     process_init(DeviceName);
     PTimer->Enabled=true;
     VPrincipal->GroupBoxEntradas->Enabled=true;
+    process_write_ao0(10);
 }
 //---------------------------------------------------------------------------
 void __fastcall TVPrincipal::IniciarTimer(TObject *Sender)
@@ -49,16 +50,21 @@ void __fastcall TVPrincipal::TimerPuertos(TObject *Sender)
     int port1 = estado_Port1();
 
     process_read_ai0();
-    int humedad;
+    float humedad;
     humedad = estado_AI0();
-    VPrincipal->ScrollBar1->Position=humedad;
     VPrincipal->Edit2->Text=humedad;
     VPrincipal->Edit2->Text=Edit2->Text+"%";
 
     if (humedad<20){                                 //State of humity AI0
+        VPrincipal->Shape8->Brush->Color=clYellow;
+        VPrincipal->Shape8->Width=humedad;
         VPrincipal->Shape3->Brush->Color=clRed;
+        Store_Port0(0x04, PIN_OFF);
+        process_write_port0();
     }else{
         VPrincipal->Shape3->Brush->Color=clWhite;
+        Store_Port0(0x04, PIN_OFF);
+        process_write_port0();
     }
     if ((port1 & 0x01) == 0){
         CheckBoxNocheClick(EsDeNoche);               //State of lamp P0_0
@@ -67,7 +73,9 @@ void __fastcall TVPrincipal::TimerPuertos(TObject *Sender)
     }
     if ((port1 & 0x02) != 0){                        //State of clima P0_1
         CheckBoxPuertaCerradaClick(PuertaCerrada);
-
+        VPrincipal->ContadorPA->Color=clWhite;
+        VPrincipal->Shape2->Brush->Color=clRed;
+        VAlarmaPuerta->Close();
     }else{
         CheckBoxPuertaAbiertaClick(PuertaAbierta);
     }
@@ -83,6 +91,10 @@ void __fastcall TVPrincipal::TimerPuertos(TObject *Sender)
     }else{
         VPrincipal->PTimer->Color = clYellow;
     }
+    VPrincipal->CheckBoxDia->Enabled=false;
+    VPrincipal->CheckBoxNoche->Enabled=false;
+    VPrincipal->CheckBoxPuertaCerrada->Enabled=false;
+    VPrincipal->CheckBoxPuertaAbierta->Enabled=false;
 }
 //---------------------------------------------------------------------------
 void __fastcall TVPrincipal::Timer_Led_Humedad(TObject *Sender)
@@ -98,7 +110,7 @@ void __fastcall TVPrincipal::CheckBoxDiaClick(TObject *Sender)
 {                                                             
     if(VPrincipal->CheckBoxDia->Checked==true){
         VPrincipal->Shape1->Brush->Color=clWhite;
-        Store_Port0(0x01, PIN_ON);                           //CheckBox Día
+        Store_Port0(0x01, PIN_OFF);                           //CheckBox Día
         VPrincipal->ImageDia->Visible=true;
         VPrincipal->ImageNoche->Visible=false;
         VPrincipal->CheckBoxNoche->Checked=false;
@@ -114,7 +126,7 @@ void __fastcall TVPrincipal::CheckBoxNocheClick(TObject *Sender)
 {
     if(VPrincipal->CheckBoxNoche->Checked==true){
         VPrincipal->Shape1->Brush->Color=clRed;
-        Store_Port0(0x01, PIN_OFF);                           //CheckBox Noche
+        Store_Port0(0x01, PIN_ON);                           //CheckBox Noche
         VPrincipal->ImageNoche->Visible=true;
         VPrincipal->ImageDia->Visible=false;
         VPrincipal->CheckBoxDia->Checked=false;
@@ -148,13 +160,10 @@ void __fastcall TVPrincipal::CheckBoxPuertaCerradaClick(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TVPrincipal::CheckBoxPuertaAbiertaClick(TObject *Sender)
 {
-    if(VPrincipal->CheckBoxPuertaAbierta->Checked==true){
-        VPrincipal->Shape2->Brush->Color=clWhite;
-        Store_Port0(0x02, PIN_OFF);                   //CheckBox puerta abierta
-        VPrincipal->ImagePAbierta->Visible=true;
+    if(VPrincipal->CheckBoxPuertaAbierta->Checked==true){  
+        VPrincipal->ImagePAbierta->Visible=true;      //CheckBox puerta abierta
         VPrincipal->ImagePCerrada->Visible=false;
         VPrincipal->CheckBoxPuertaCerrada->Checked=false;
-        process_write_port0();
     }
     if(Sender==PuertaAbierta){
         VPrincipal->CheckBoxPuertaCerrada->Checked=false;
@@ -170,15 +179,18 @@ void __fastcall TVPrincipal::TimerPuertaAbierta(TObject *Sender)
     if(contador==6){                                     //Timer alarma puerta
         if(VPrincipal->Shape5->Brush->Color==clWhite){   //Parpadeo led
             VPrincipal->Shape5->Brush->Color=clRed;
-            VPrincipal->ContadorPA->Color=clRed;
+            VPrincipal->ContadorPA->Color=clWhite;
             VAlarmaPuerta->Label1->Font->Color=clYellow;
         }else{
             VPrincipal->Shape5->Brush->Color=clWhite;
-            VPrincipal->ContadorPA->Color=clWhite;
+            VPrincipal->ContadorPA->Color=clRed;
             VAlarmaPuerta->Label1->Font->Color=clBlack;
         }
+    Store_Port0(0x02, PIN_OFF);
+    VPrincipal->Shape2->Brush->Color=clWhite;
     VPrincipal->ContadorPA->Text=contador;
     VAlarmaPuerta->Show();
+    process_write_port0();
     }
     if(Sender==reinicio){
         VPrincipal->Shape5->Brush->Color=clWhite;

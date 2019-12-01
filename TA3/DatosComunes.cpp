@@ -6,7 +6,7 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 static int port1;
-static int humedad;
+static float humedad;
 static int port0;
 static int estadopin;
 
@@ -17,7 +17,7 @@ int estado_Port1(){
     return (port1);
 }
 
-void Store_AI0(int humity){
+void Store_AI0(float humity){
     if(humity>0){
         humedad=humity*5;
     }
@@ -25,7 +25,7 @@ void Store_AI0(int humity){
         humedad=0;
     }
 }
-int estado_AI0(){
+float estado_AI0(){
     return (humedad);
 }
 
