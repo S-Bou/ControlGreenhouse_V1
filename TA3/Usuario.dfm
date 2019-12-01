@@ -2016,14 +2016,30 @@ object VPrincipal: TVPrincipal
     object Shape7: TShape
       Left = 16
       Top = 192
-      Width = 265
+      Width = 201
       Height = 33
     end
     object Shape8: TShape
       Left = 16
       Top = 192
-      Width = 265
+      Width = 201
       Height = 33
+      Brush.Style = bsClear
+      Visible = False
+    end
+    object Shape9: TShape
+      Left = 16
+      Top = 192
+      Width = 201
+      Height = 33
+      Visible = False
+    end
+    object Shape10: TShape
+      Left = 16
+      Top = 192
+      Width = 201
+      Height = 33
+      Visible = False
     end
     object CheckBoxDia: TCheckBox
       Left = 16
@@ -2062,7 +2078,7 @@ object VPrincipal: TVPrincipal
       OnClick = CheckBoxPuertaAbiertaClick
     end
     object Edit2: TEdit
-      Left = 288
+      Left = 224
       Top = 193
       Width = 57
       Height = 32
@@ -2113,14 +2129,14 @@ object VPrincipal: TVPrincipal
     object ScrollBar2: TScrollBar
       Left = 16
       Top = 264
-      Width = 265
+      Width = 201
       Height = 33
       Enabled = False
       PageSize = 0
       TabOrder = 5
     end
     object Edit3: TEdit
-      Left = 288
+      Left = 224
       Top = 265
       Width = 57
       Height = 32

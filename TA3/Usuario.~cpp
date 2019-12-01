@@ -50,16 +50,26 @@ void __fastcall TVPrincipal::TimerPuertos(TObject *Sender)
     int port1 = estado_Port1();
 
     process_read_ai0();
-    int humedad;
+    float humedad;
     humedad = estado_AI0();
-    VPrincipal->ScrollBar1->Position=humedad;
-    VPrincipal->Edit2->Text=humedad;
+    VPrincipal->Edit2->Text=(int)humedad;
     VPrincipal->Edit2->Text=Edit2->Text+"%";
 
     if (humedad<20){                                 //State of humity AI0
+        VPrincipal->Shape8->Brush->Color=clYellow;
+        VPrincipal->Shape8->Width=humedad*3;
         VPrincipal->Shape3->Brush->Color=clRed;
-    }else{
+        Store_Port0(0x04, PIN_OFF);
+        process_write_port0();
+    }else if(humedad>=20 && humedad<=80){
+        VPrincipal->Shape9->Brush->Color=clBlue;
+        VPrincipal->Shape9->Width=humedad*3;
         VPrincipal->Shape3->Brush->Color=clWhite;
+        Store_Port0(0x04, PIN_OFF);
+        process_write_port0();
+    }else{
+        VPrincipal->Shape10->Brush->Color=clBlue;
+        VPrincipal->Shape10->Width=humedad*3;
     }
     if ((port1 & 0x01) == 0){
         CheckBoxNocheClick(EsDeNoche);               //State of lamp P0_0
@@ -76,7 +86,6 @@ void __fastcall TVPrincipal::TimerPuertos(TObject *Sender)
     }
     if(humedad>80){
         VPrincipal->TimerLedHumedad->Enabled = true;
-        CheckBoxPuertaAbiertaClick(PuertaAbierta);
     }else{
         VPrincipal->TimerLedHumedad->Enabled = false;
         VPrincipal->Shape4->Brush->Color=clWhite;
@@ -156,12 +165,10 @@ void __fastcall TVPrincipal::CheckBoxPuertaCerradaClick(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TVPrincipal::CheckBoxPuertaAbiertaClick(TObject *Sender)
 {
-    if(VPrincipal->CheckBoxPuertaAbierta->Checked==true){
-        //Store_Port0(0x02, PIN_OFF);                   //CheckBox puerta abierta
-        VPrincipal->ImagePAbierta->Visible=true;
+    if(VPrincipal->CheckBoxPuertaAbierta->Checked==true){  
+        VPrincipal->ImagePAbierta->Visible=true;      //CheckBox puerta abierta
         VPrincipal->ImagePCerrada->Visible=false;
         VPrincipal->CheckBoxPuertaCerrada->Checked=false;
-        //process_write_port0();
     }
     if(Sender==PuertaAbierta){
         VPrincipal->CheckBoxPuertaCerrada->Checked=false;

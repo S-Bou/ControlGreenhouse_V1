@@ -59,6 +59,8 @@ __published:	// IDE-managed Components
     TLabel *Label19;
     TShape *Shape7;
     TShape *Shape8;
+    TShape *Shape9;
+    TShape *Shape10;
     void __fastcall BotonIniciarTarjeta(TObject *Sender);
     void __fastcall IniciarTimer(TObject *Sender);
     void __fastcall TimerPuertos(TObject *Sender);

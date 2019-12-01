@@ -2,7 +2,7 @@ object VPrincipal: TVPrincipal
   Left = 190
   Top = 124
   Width = 412
-  Height = 746
+  Height = 909
   Caption = 'Control de invernadero'
   Color = cl3DLight
   Font.Charset = DEFAULT_CHARSET
@@ -136,7 +136,7 @@ object VPrincipal: TVPrincipal
   end
   object Label9: TLabel
     Left = 16
-    Top = 256
+    Top = 320
     Width = 248
     Height = 36
     Caption = 'Alarma humedad:'
@@ -149,14 +149,14 @@ object VPrincipal: TVPrincipal
   end
   object Shape4: TShape
     Left = 280
-    Top = 256
+    Top = 320
     Width = 33
     Height = 33
     Shape = stCircle
   end
   object Label10: TLabel
     Left = 16
-    Top = 296
+    Top = 360
     Width = 189
     Height = 13
     Caption = 'La humedad ha superado el 80%.'
@@ -169,7 +169,7 @@ object VPrincipal: TVPrincipal
   end
   object Label11: TLabel
     Left = 16
-    Top = 320
+    Top = 384
     Width = 227
     Height = 37
     Caption = 'Alarma puerta:'
@@ -182,14 +182,14 @@ object VPrincipal: TVPrincipal
   end
   object Shape5: TShape
     Left = 280
-    Top = 320
+    Top = 384
     Width = 33
     Height = 33
     Shape = stCircle
   end
   object Label12: TLabel
     Left = 16
-    Top = 360
+    Top = 424
     Width = 198
     Height = 13
     Caption = 'Puerta abierta m'#225's de 6 segundos.'
@@ -239,9 +239,55 @@ object VPrincipal: TVPrincipal
     Font.Style = [fsBold]
     ParentFont = False
   end
+  object Label17: TLabel
+    Left = 16
+    Top = 256
+    Width = 169
+    Height = 36
+    Caption = 'Ventilaci'#243'n:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -31
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Shape6: TShape
+    Left = 280
+    Top = 256
+    Width = 33
+    Height = 33
+    Shape = stCircle
+  end
+  object Label18: TLabel
+    Left = 16
+    Top = 296
+    Width = 165
+    Height = 13
+    Caption = 'Temperatura superior a xx'#186'C.'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label19: TLabel
+    Left = 325
+    Top = 256
+    Width = 53
+    Height = 29
+    Caption = 'P0.3'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -24
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
   object PIniciarT: TPanel
     Left = 16
-    Top = 640
+    Top = 808
     Width = 169
     Height = 49
     Caption = 'Iniciar tarjeta'
@@ -256,7 +302,7 @@ object VPrincipal: TVPrincipal
   end
   object PTimer: TPanel
     Left = 208
-    Top = 640
+    Top = 808
     Width = 169
     Height = 49
     Caption = 'Timer ON'
@@ -286,9 +332,9 @@ object VPrincipal: TVPrincipal
   end
   object GroupBoxEntradas: TGroupBox
     Left = 16
-    Top = 384
+    Top = 464
     Width = 361
-    Height = 241
+    Height = 321
     Caption = 'Entradas'
     Color = clScrollBar
     Enabled = False
@@ -1951,6 +1997,46 @@ object VPrincipal: TVPrincipal
         FFFFFFFFFF00}
       Visible = False
     end
+    object Label16: TLabel
+      Left = 16
+      Top = 241
+      Width = 126
+      Height = 24
+      Caption = 'Temperatura:'
+      Color = clScrollBar
+      Enabled = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object Shape7: TShape
+      Left = 16
+      Top = 192
+      Width = 249
+      Height = 33
+    end
+    object Shape8: TShape
+      Left = 16
+      Top = 192
+      Width = 57
+      Height = 33
+    end
+    object Shape9: TShape
+      Left = 72
+      Top = 192
+      Width = 137
+      Height = 33
+    end
+    object Shape10: TShape
+      Left = 208
+      Top = 192
+      Width = 57
+      Height = 33
+    end
     object CheckBoxDia: TCheckBox
       Left = 16
       Top = 24
@@ -1987,18 +2073,10 @@ object VPrincipal: TVPrincipal
       TabOrder = 1
       OnClick = CheckBoxPuertaAbiertaClick
     end
-    object ScrollBar1: TScrollBar
-      Left = 16
-      Top = 192
-      Width = 265
-      Height = 33
-      PageSize = 0
-      TabOrder = 2
-    end
     object Edit2: TEdit
-      Left = 288
+      Left = 272
       Top = 193
-      Width = 57
+      Width = 73
       Height = 32
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -2006,7 +2084,7 @@ object VPrincipal: TVPrincipal
       Font.Name = 'MS Sans Serif'
       Font.Style = [fsBold]
       ParentFont = False
-      TabOrder = 3
+      TabOrder = 2
     end
     object CheckBoxNoche: TCheckBox
       Left = 16
@@ -2022,7 +2100,7 @@ object VPrincipal: TVPrincipal
       Font.Style = [fsBold]
       ParentColor = False
       ParentFont = False
-      TabOrder = 4
+      TabOrder = 3
       OnClick = CheckBoxNocheClick
     end
     object CheckBoxPuertaCerrada: TCheckBox
@@ -2041,13 +2119,36 @@ object VPrincipal: TVPrincipal
       ParentColor = False
       ParentFont = False
       State = cbChecked
-      TabOrder = 5
+      TabOrder = 4
       OnClick = CheckBoxPuertaCerradaClick
+    end
+    object ScrollBar2: TScrollBar
+      Left = 16
+      Top = 264
+      Width = 249
+      Height = 33
+      Enabled = False
+      PageSize = 0
+      TabOrder = 5
+    end
+    object Edit3: TEdit
+      Left = 272
+      Top = 265
+      Width = 73
+      Height = 32
+      Enabled = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 6
     end
   end
   object ContadorPA: TEdit
     Left = 328
-    Top = 320
+    Top = 384
     Width = 25
     Height = 33
     Color = clWhite

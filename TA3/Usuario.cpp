@@ -54,17 +54,32 @@ void __fastcall TVPrincipal::TimerPuertos(TObject *Sender)
     humedad = estado_AI0();
     VPrincipal->Edit2->Text=humedad;
     VPrincipal->Edit2->Text=Edit2->Text+"%";
-
+    int humilevel;
+    humilevel = humedad*2;
     if (humedad<20){                                 //State of humity AI0
         VPrincipal->Shape8->Brush->Color=clYellow;
-        VPrincipal->Shape8->Width=humedad;
+        VPrincipal->Shape8->Width=humilevel;
         VPrincipal->Shape3->Brush->Color=clRed;
         Store_Port0(0x04, PIN_OFF);
         process_write_port0();
-    }else{
+        VPrincipal->Shape8->Visible=true;
+        VPrincipal->Shape9->Visible=false;
+        VPrincipal->Shape10->Visible=false;
+    }else if(humedad>=20 && humedad<=80){
+        VPrincipal->Shape9->Brush->Color=clBlue;
+        VPrincipal->Shape9->Width=humilevel;
         VPrincipal->Shape3->Brush->Color=clWhite;
         Store_Port0(0x04, PIN_OFF);
         process_write_port0();
+        VPrincipal->Shape8->Visible=false;
+        VPrincipal->Shape9->Visible=true;
+        VPrincipal->Shape10->Visible=false;
+    }else{
+        VPrincipal->Shape10->Brush->Color=clRed;
+        VPrincipal->Shape10->Width=humilevel;
+        VPrincipal->Shape8->Visible=false;
+        VPrincipal->Shape9->Visible=false;
+        VPrincipal->Shape10->Visible=true;
     }
     if ((port1 & 0x01) == 0){
         CheckBoxNocheClick(EsDeNoche);               //State of lamp P0_0
