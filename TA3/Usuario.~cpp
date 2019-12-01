@@ -37,10 +37,18 @@ void __fastcall TVPrincipal::IniciarTimer(TObject *Sender)
     if(VPrincipal->TimerEstadoPuertos->Enabled == false){ //Button timer ON/OFF
         VPrincipal->TimerEstadoPuertos->Enabled = true;
         VPrincipal->PTimer->Caption = "Autómata OFF";
+        VPrincipal->CheckBoxDia->Enabled=false;
+        VPrincipal->CheckBoxNoche->Enabled=false;
+        VPrincipal->CheckBoxPuertaCerrada->Enabled=false;
+        VPrincipal->CheckBoxPuertaAbierta->Enabled=false;
     }else{
         VPrincipal->TimerEstadoPuertos->Enabled = false;
         VPrincipal->PTimer->Color = clBtnFace;
         VPrincipal->PTimer->Caption = "Autómata ON";
+        VPrincipal->CheckBoxDia->Enabled=true;
+        VPrincipal->CheckBoxNoche->Enabled=true;
+        VPrincipal->CheckBoxPuertaCerrada->Enabled=true;
+        VPrincipal->CheckBoxPuertaAbierta->Enabled=true;
     }
 }
 //---------------------------------------------------------------------------
@@ -99,8 +107,10 @@ void __fastcall TVPrincipal::TimerPuertos(TObject *Sender)
         VPrincipal->TimerLedHumedad->Enabled = false;
         VPrincipal->Shape4->Brush->Color=clWhite;
         VPrincipal->Shape6->Brush->Color=clWhite;
+        VPrincipal->ContadorHU->Visible=false;
         Store_Port0(0x08, PIN_OFF);
         process_write_port0();
+        conthume=1;
     }
 
     if(VPrincipal->PTimer->Color == clYellow){  //change color of buttton timer
@@ -108,15 +118,11 @@ void __fastcall TVPrincipal::TimerPuertos(TObject *Sender)
     }else{
         VPrincipal->PTimer->Color = clYellow;
     }
-    VPrincipal->CheckBoxDia->Enabled=false;
-    VPrincipal->CheckBoxNoche->Enabled=false;
-    VPrincipal->CheckBoxPuertaCerrada->Enabled=false;
-    VPrincipal->CheckBoxPuertaAbierta->Enabled=false;
 }
 //---------------------------------------------------------------------------
 void __fastcall TVPrincipal::Timer_Led_Humedad(TObject *Sender)
 {
-    if(contador==6){                                     //Timer alarma humedad
+    if(conthume==6){                                     //Timer alarma humedad
         if(VPrincipal->Shape4->Brush->Color==clWhite){
             VPrincipal->Shape4->Brush->Color=clRed;
             VPrincipal->ContadorHU->Color=clWhite;
