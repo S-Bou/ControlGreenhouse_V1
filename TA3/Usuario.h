@@ -50,7 +50,7 @@ __published:	// IDE-managed Components
     TLabel *Label12;
     TEdit *ContadorPA;
     TEdit *ContadorHU;
-    TGroupBox *GroupBox2;
+    TGroupBox *GroupBoxSalidas;
     TShape *Shape1;
     TShape *Shape2;
     TShape *Shape3;
@@ -63,12 +63,12 @@ __published:	// IDE-managed Components
     TShape *Shape6;
     TLabel *Label18;
     TLabel *Label19;
-    TCheckBox *CheckBox1;
-    TCheckBox *CheckBox2;
-    TCheckBox *CheckBox3;
-    TCheckBox *CheckBox4;
+    TCheckBox *CheckBoxLampara;
+    TCheckBox *CheckBoxClima;
+    TCheckBox *CheckBoxValve;
+    TCheckBox *CheckBoxFan;
     void __fastcall BotonIniciarTarjeta(TObject *Sender);
-    void __fastcall IniciarTimer(TObject *Sender);
+    void __fastcall BotonIniciarAutomata(TObject *Sender);
     void __fastcall TimerPuertos(TObject *Sender);
     void __fastcall Timer_Led_Humedad(TObject *Sender);
     void __fastcall CheckBoxDiaClick(TObject *Sender);
@@ -76,6 +76,10 @@ __published:	// IDE-managed Components
     void __fastcall CheckBoxPuertaCerradaClick(TObject *Sender);
     void __fastcall CheckBoxPuertaAbiertaClick(TObject *Sender);
     void __fastcall TimerPuertaAbierta(TObject *Sender);
+    void __fastcall CheckBoxLamparaClick(TObject *Sender);
+    void __fastcall CheckBoxClimaClick(TObject *Sender);
+    void __fastcall CheckBoxValveClick(TObject *Sender);
+    void __fastcall CheckBoxFanClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
     __fastcall TVPrincipal(TComponent* Owner);

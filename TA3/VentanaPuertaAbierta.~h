@@ -12,9 +12,9 @@ class TVAlarmaPuerta : public TForm
 {
 __published:	// IDE-managed Components
     TButton *BAceptar;
-    TButton *BCerrarPuerta;
     TLabel *Label1;
     TLabel *Label2;
+    TLabel *Label3;
     void __fastcall BAceptarClick(TObject *Sender);
     void __fastcall BCerrarPuertaClick(TObject *Sender);
 private:	// User declarations

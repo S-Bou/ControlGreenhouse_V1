@@ -1,9 +1,11 @@
 object VAlarmaPuerta: TVAlarmaPuerta
   Left = 696
   Top = 175
-  Width = 402
-  Height = 277
+  BiDiMode = bdRightToLeftNoAlign
+  BorderStyle = bsDialog
   Caption = 'Alarma de puerta abierta'
+  ClientHeight = 238
+  ClientWidth = 386
   Color = clRed
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clMaroon
@@ -11,6 +13,7 @@ object VAlarmaPuerta: TVAlarmaPuerta
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  ParentBiDiMode = False
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel

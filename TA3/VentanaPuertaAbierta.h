@@ -16,7 +16,6 @@ __published:	// IDE-managed Components
     TLabel *Label2;
     TLabel *Label3;
     void __fastcall BAceptarClick(TObject *Sender);
-    void __fastcall BCerrarPuertaClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
     __fastcall TVAlarmaPuerta(TComponent* Owner);

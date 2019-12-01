@@ -1,9 +1,11 @@
 object VPrincipal: TVPrincipal
   Left = 181
   Top = 117
-  Width = 434
-  Height = 858
+  BiDiMode = bdRightToLeftNoAlign
+  BorderStyle = bsDialog
   Caption = 'Control de invernadero'
+  ClientHeight = 819
+  ClientWidth = 420
   Color = cl3DLight
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,6 +13,7 @@ object VPrincipal: TVPrincipal
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  ParentBiDiMode = False
   PixelsPerInch = 96
   TextHeight = 13
   object Label3: TLabel
@@ -57,13 +60,13 @@ object VPrincipal: TVPrincipal
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 1
-    OnClick = IniciarTimer
+    OnClick = BotonIniciarAutomata
   end
   object Edit1: TEdit
     Left = 312
     Top = 8
     Width = 89
-    Height = 33
+    Height = 37
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -23
@@ -80,6 +83,8 @@ object VPrincipal: TVPrincipal
     Height = 305
     Caption = 'Entradas'
     Color = clScrollBar
+    Ctl3D = True
+    DragMode = dmAutomatic
     Enabled = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -87,6 +92,7 @@ object VPrincipal: TVPrincipal
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
     ParentColor = False
+    ParentCtl3D = False
     ParentFont = False
     TabOrder = 3
     object Label8: TLabel
@@ -1743,10 +1749,11 @@ object VPrincipal: TVPrincipal
     object Label16: TLabel
       Left = 80
       Top = 233
-      Width = 126
+      Width = 162
       Height = 24
-      Caption = 'Temperatura:'
+      Caption = 'Temperatura: AI1'
       Color = clScrollBar
+      DragMode = dmAutomatic
       Enabled = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -2477,13 +2484,14 @@ object VPrincipal: TVPrincipal
       Visible = False
     end
   end
-  object GroupBox2: TGroupBox
+  object GroupBoxSalidas: TGroupBox
     Left = 16
     Top = 48
     Width = 385
     Height = 241
     Caption = 'Salidas'
     Color = clScrollBar
+    Enabled = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -16
@@ -2504,7 +2512,6 @@ object VPrincipal: TVPrincipal
       Top = 72
       Width = 33
       Height = 33
-      Brush.Color = clRed
       Shape = stCircle
     end
     object Shape3: TShape
@@ -2625,7 +2632,7 @@ object VPrincipal: TVPrincipal
       Font.Style = [fsBold]
       ParentFont = False
     end
-    object CheckBox1: TCheckBox
+    object CheckBoxLampara: TCheckBox
       Left = 16
       Top = 16
       Width = 233
@@ -2638,8 +2645,9 @@ object VPrincipal: TVPrincipal
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 0
+      OnClick = CheckBoxLamparaClick
     end
-    object CheckBox2: TCheckBox
+    object CheckBoxClima: TCheckBox
       Left = 16
       Top = 72
       Width = 249
@@ -2652,8 +2660,9 @@ object VPrincipal: TVPrincipal
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 1
+      OnClick = CheckBoxClimaClick
     end
-    object CheckBox3: TCheckBox
+    object CheckBoxValve: TCheckBox
       Left = 16
       Top = 128
       Width = 249
@@ -2666,8 +2675,9 @@ object VPrincipal: TVPrincipal
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 2
+      OnClick = CheckBoxValveClick
     end
-    object CheckBox4: TCheckBox
+    object CheckBoxFan: TCheckBox
       Left = 16
       Top = 184
       Width = 249
@@ -2680,6 +2690,7 @@ object VPrincipal: TVPrincipal
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 3
+      OnClick = CheckBoxFanClick
     end
   end
   object TimerEstadoPuertos: TTimer
