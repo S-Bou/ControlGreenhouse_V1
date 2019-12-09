@@ -213,6 +213,7 @@ void __fastcall TVPrincipal::CheckBoxPuertaCerradaClick(TObject *Sender)
         Store_Port0(0x02, PIN_ON);                   //CheckBox puerta cerrada
         VPrincipal->ImagePAbierta->Visible=false;
         VPrincipal->ImagePCerrada->Visible=true;
+        VPrincipal->CheckBoxPuertaAbierta->Checked=false;
         process_write_port0();
     }
     if(Sender==PuertaCerrada){

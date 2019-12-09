@@ -1,10 +1,10 @@
 object VPrincipal: TVPrincipal
-  Left = 181
-  Top = 117
+  Left = 179
+  Top = 1
   BiDiMode = bdRightToLeftNoAlign
   BorderStyle = bsDialog
   Caption = 'Control de invernadero'
-  ClientHeight = 819
+  ClientHeight = 781
   ClientWidth = 420
   Color = cl3DLight
   Font.Charset = DEFAULT_CHARSET

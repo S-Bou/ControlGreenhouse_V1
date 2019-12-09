@@ -80,7 +80,6 @@ void __fastcall TVPrincipal::TimerPuertos(TObject *Sender)
     }else{
         VPrincipal->CheckBoxValve->Checked=false;
         VPrincipal->Shape10->Brush->Color=clRed;
-        VPrincipal->CheckBoxClima->Checked=true;
         VPrincipal->Shape10->Width=humedad;
         VPrincipal->Shape8->Visible=false;
         VPrincipal->Shape9->Visible=false;
@@ -161,7 +160,6 @@ void __fastcall TVPrincipal::TimerPuertaAbierta(TObject *Sender)
             VAlarmaPuerta->Label1->Font->Color=clBlack;
         }
     CheckBoxClimaClick(PuertaAbierta);
-    VPrincipal->Shape2->Brush->Color=clWhite;
     VPrincipal->ContadorPA->Text=contador;
     Store_Port0(0x02, PIN_OFF);
     VAlarmaPuerta->Show();
@@ -224,6 +222,7 @@ void __fastcall TVPrincipal::CheckBoxPuertaCerradaClick(TObject *Sender)
     VPrincipal->TimerPAbierta->Enabled=false;
     VPrincipal->ContadorPA->Visible=false;
     VPrincipal->Shape5->Brush->Color=clWhite;
+    VPrincipal->CheckBoxPuertaAbierta->Checked=false;
     contador=1;
 }
 //---------------------------------------------------------------------------
@@ -271,6 +270,7 @@ void __fastcall TVPrincipal::CheckBoxClimaClick(TObject *Sender)
     }
     if(Sender==PuertaAbierta){
         VPrincipal->Shape2->Brush->Color=clWhite;
+        VPrincipal->CheckBoxClima->Checked=false;
         Store_Port0(0x02, PIN_OFF);
         process_write_port0();
     }
