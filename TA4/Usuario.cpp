@@ -309,3 +309,4 @@ double redondeo(double num){                       //Redondeo de decimales
     return rounded;                                //determina los decimales
 }                                                  //que muestra: 10->1 decimal
 //---------------------------------------------------------------------------
+

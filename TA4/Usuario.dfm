@@ -1,11 +1,11 @@
 object VPrincipal: TVPrincipal
-  Left = 179
-  Top = 1
+  Left = 178
+  Top = 101
   BiDiMode = bdRightToLeftNoAlign
   BorderStyle = bsDialog
   Caption = 'Control de invernadero'
-  ClientHeight = 781
-  ClientWidth = 420
+  ClientHeight = 618
+  ClientWidth = 810
   Color = cl3DLight
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -32,8 +32,8 @@ object VPrincipal: TVPrincipal
     ParentFont = False
   end
   object PIniciarT: TPanel
-    Left = 16
-    Top = 752
+    Left = 424
+    Top = 552
     Width = 169
     Height = 49
     Caption = 'Iniciar tarjeta'
@@ -47,8 +47,8 @@ object VPrincipal: TVPrincipal
     OnClick = BotonIniciarTarjeta
   end
   object PTimer: TPanel
-    Left = 232
-    Top = 752
+    Left = 624
+    Top = 552
     Width = 169
     Height = 49
     Caption = 'Aut'#243'mata ON'
@@ -78,7 +78,7 @@ object VPrincipal: TVPrincipal
   end
   object GroupBoxEntradas: TGroupBox
     Left = 16
-    Top = 432
+    Top = 296
     Width = 385
     Height = 305
     Caption = 'Entradas'
@@ -2369,8 +2369,8 @@ object VPrincipal: TVPrincipal
     end
   end
   object GroupBox1: TGroupBox
-    Left = 16
-    Top = 296
+    Left = 408
+    Top = 8
     Width = 385
     Height = 129
     Caption = 'Alarmas'
